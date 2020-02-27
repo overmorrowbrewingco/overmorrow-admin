@@ -5,11 +5,36 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "lint": "eslint ./",
     "start": "next start"
   },
   "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.21.0",
     "next": "9.2.2",
     "react": "16.13.0",
+    "react-admin": "^3.2.3",
     "react-dom": "16.13.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^2.21.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-react-app": "^5.2.0",
+    "eslint-plugin-chai-friendly": "^0.5.0",
+    "eslint-plugin-flowtype": "^4.6.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "husky": "^4.2.3",
+    "prettier": "^1.19.1",
+    "typescript": "^3.8.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run lint"
+    }
   }
 }
