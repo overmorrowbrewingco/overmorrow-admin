@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Content = ({ children, title, titleButton }) => (
-  <div className="content-wrapper pt-2" style={{ minHeight: '100vh' }}>
-    <div className="content-header">
+  <div className="content-wrapper" style={{ minHeight: '100vh' }}>
+    <div className="content-header pt-2">
       {title && (
         <div className="container-fluid">
           <div className="row mb-2">

@@ -18,7 +18,7 @@ export default class MyDocument extends Document {
           <script src="/static/adminlte.js" />
         </Head>
 
-        <body className="skin-yellow">
+        <body className="layout-fixed">
           <Main />
           <NextScript />
         </body>
