@@ -10,7 +10,7 @@ const Sidebar = ({ children }) => (
   >
     <Link href="/">
       <a className="brand-link" href="/">
-        <span class="brand-text font-weight-light" href="/">
+        <span className="brand-text font-weight-light" href="/">
           Overmorrow
         </span>
       </a>
