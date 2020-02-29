@@ -1,3 +1,4 @@
+const path = require('path');
 const nextBuildId = require('next-build-id');
 const webpack = require('webpack');
 const withGraphql = require('next-plugin-graphql');
@@ -47,6 +48,9 @@ module.exports = withGraphql(
             exclude: /mini-css-extract-plugin[^]*Conflicting order between:/,
           }),
         );
+
+        // Alias root with ~
+        config.resolve.alias['~'] = path.resolve(__dirname);
 
         return config;
       },

@@ -1,14 +1,11 @@
 import React from 'react';
 
-import Header from '../UI/AdminLTE/Header';
-import Sidebar from '../UI/AdminLTE/Sidebar';
-import SidebarMenu from '../UI/AdminLTE/SidebarMenu';
-import SidebarMenuNavLink from '../UI/AdminLTE/SidebarMenuNavLink';
+import Sidebar from '~/components/UI/AdminLTE/Sidebar';
+import SidebarMenu from '~/components/UI/AdminLTE/SidebarMenu';
+import SidebarMenuNavLink from '~/components/UI/AdminLTE/SidebarMenuNavLink';
 
 const Layout = ({ children }) => (
   <div className="wrapper">
-    <Header />
-
     <Sidebar>
       <SidebarMenu>
         <SidebarMenuNavLink href="/">Home</SidebarMenuNavLink>
@@ -20,7 +17,7 @@ const Layout = ({ children }) => (
       </SidebarMenu>
     </Sidebar>
 
-    <div className="content-wrapper">{children}</div>
+    {children}
   </div>
 );
 
