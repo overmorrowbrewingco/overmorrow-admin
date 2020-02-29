@@ -10,7 +10,12 @@
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^2.21.0",
+    "@zeit/next-sass": "^1.0.1",
+    "admin-lte": "v3",
+    "bootstrap": "^4.4.1",
+    "class-names": "^1.0.0",
     "next": "9.2.2",
+    "node-sass": "^4.13.1",
     "react": "16.13.0",
     "react-admin": "^3.2.3",
     "react-dom": "16.13.0"

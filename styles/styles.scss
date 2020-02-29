@@ -1,0 +1,9 @@
+/**
+ * App entry scss file
+ *
+ * @url https://getbootstrap.com/docs/4.0/getting-started/theming/
+ * @url https://getbootstrap.com/docs/4.0/getting-started/webpack/#importing-precompiled-sass
+ */
+//$blue:    purple; // Override variables here to style accordingly
+@import '~bootstrap/scss/bootstrap';
+@import "~admin-lte/build/scss/AdminLTE-raw.scss";
