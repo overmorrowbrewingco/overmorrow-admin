@@ -8,7 +8,14 @@ const Login = () => {
   return (
     <div className="login-page">
       <div className="login-box">
-        <div className="login-logo">Overmorrow</div>
+        <div className="login-logo">
+          <img
+            alt="Overmorrow logo"
+            src="/overmorrow-logo-horizontal-small.png"
+            className="img-fluid"
+          />
+        </div>
+
         <div className="card-body login-card-body">
           <p className="login-box-msg">Sign in to start your session</p>
 
