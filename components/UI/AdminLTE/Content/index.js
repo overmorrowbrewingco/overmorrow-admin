@@ -3,12 +3,6 @@ import React from 'react';
 const Content = ({ children, title, titleButton }) => (
   <div className="content-wrapper" style={{ minHeight: '100vh' }}>
     <div className="content-header pt-2">
-      <div className="container-fluid">
-        <div className="col-sm-6">
-          <h1 className="m-0 text-dark">{title}</h1>
-        </div>
-      </div>
-
       {title && (
         <div className="container-fluid">
           <div className="row mb-2">
