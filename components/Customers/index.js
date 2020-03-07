@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import Link from 'next/link';
 import { get } from 'lodash';
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
@@ -34,12 +35,14 @@ const Customers = () => {
         <nav className="navbar navbar-expand">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a
-                className="btn btn-dark mr-2 nav-link"
-                href="/customers/new/business"
-              >
-                <i className="fa fa-plus nav-icon" /> Create Business
-              </a>
+              <Link href="/customers/new/business">
+                <a
+                  className="btn btn-dark mr-2 nav-link"
+                  href="/customers/new/business"
+                >
+                  <i className="fa fa-plus nav-icon" /> Create Business
+                </a>
+              </Link>
             </li>
 
             <li className="nav-item">

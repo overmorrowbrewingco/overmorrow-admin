@@ -16,7 +16,7 @@ const Header = ({ children, toggleSidebar }) => {
         {/* eslint-disable-next-line */}
         <a href="#" className="nav-link" onClick={logout} role="button">
           <i className="fa fa-sign-out nav-icon" />
-          Logout
+          <span> </span>Logout
         </a>
       </ul>
     </nav>
