@@ -65,11 +65,7 @@ const StepForm = ({
           <Loading className="StepForm__loading" fullScreen={false} />
         )}
 
-        <StepComponent
-          data={data}
-          errors={formState.errors}
-          register={formState.register}
-        />
+        <StepComponent data={data} {...formState} />
 
         {ButtonWrapper ? (
           <ButtonWrapper>

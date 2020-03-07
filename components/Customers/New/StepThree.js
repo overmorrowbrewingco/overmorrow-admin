@@ -1,9 +1,10 @@
 import React from 'react';
 import { get } from 'lodash';
 
+import AddressFormFields from '~/components/AddressFormFields';
 import FormGroup from '~/components/UI/AdminLTE/FormGroup';
 
-const StepThree = ({ data, errors, register }) => (
+const StepThree = ({ data, errors, register, setValue }) => (
   <div className="card-body">
     <div className="row">
       <div className="col-sm-12">
@@ -15,7 +16,7 @@ const StepThree = ({ data, errors, register }) => (
     </div>
 
     <div className="row">
-      <div className="col-sm-6">
+      <div className="col-sm-12">
         <FormGroup
           error={get(errors, 'locations.data[0].name')}
           label="Location Name"
@@ -36,27 +37,6 @@ const StepThree = ({ data, errors, register }) => (
           A name to distinguish this location from others. Can be something
           simple like "Hoan Kiem Taproom".
         </small>
-      </div>
-
-      <div className="col-sm-6">
-        <FormGroup
-          error={get(errors, 'locations.data[0].city')}
-          label="City"
-          name="[locations][data][0][city]"
-        >
-          <select
-            className="form-control"
-            defaultValue={get(data, 'locations.data[0].city')}
-            name="[locations][data][0][city]"
-            ref={register({
-              required: 'Required',
-            })}
-          >
-            <option value="" />
-            <option value="Hanoi">Hanoi</option>
-            <option value="Ho Chi Minh City">Ho Chi Minh City</option>
-          </select>
-        </FormGroup>
       </div>
     </div>
 
@@ -79,92 +59,13 @@ const StepThree = ({ data, errors, register }) => (
 
     <div className="row">
       <div className="col-sm-12">
-        <hr />
-      </div>
-    </div>
-
-    <div className="row">
-      <input
-        name="[locations][data][0][address][data][country_code]"
-        ref={register()}
-        type="hidden"
-        value="VN"
-      />
-
-      <div className="col-sm-6">
-        <FormGroup
-          error={get(errors, 'locations.data[0].address.data.address_line_1')}
-          label="Address Line 1"
-          name="[locations][data][0][address][data][address_line_1]"
-        >
-          <input
-            autocomplete="address-line1"
-            className="form-control"
-            defaultValue={get(data, 'locations.data[0].address_line_1')}
-            name="[locations][data][0][address][data][address_line_1]"
-            ref={register({
-              required: 'Required',
-            })}
-            type="text"
-          />
-        </FormGroup>
-      </div>
-
-      <div className="col-sm-6">
-        <FormGroup
-          error={get(errors, 'locations.data[0].address.data.address_line_2')}
-          label="Address Line 2"
-          name="[locations][data][0][address][data][address_line_2]"
-        >
-          <input
-            autocomplete="address-line2"
-            className="form-control"
-            defaultValue={get(data, 'locations.data[0].address_line_2')}
-            name="[locations][data][0][address][data][address_line_2]"
-            ref={register()}
-            type="text"
-          />
-        </FormGroup>
-      </div>
-    </div>
-
-    <div className="row">
-      <div className="col-sm-6">
-        <FormGroup
-          error={get(errors, 'locations.data[0].address.data.admin_area_3')}
-          label="District"
-          name="[locations][data][0][address][data][admin_area_3]"
-        >
-          <input
-            autocomplete="address-level3"
-            className="form-control"
-            defaultValue={get(data, 'locations.data[0].admin_area_3')}
-            name="[locations][data][0][address][data][admin_area_3]"
-            ref={register({
-              required: 'Required',
-            })}
-            type="text"
-          />
-        </FormGroup>
-      </div>
-
-      <div className="col-sm-6">
-        <FormGroup
-          error={get(errors, 'locations.data[0].address.data.admin_area_2')}
-          label="City"
-          name="[locations][data][0][address][data][admin_area_2]"
-        >
-          <input
-            autocomplete="address-level2"
-            className="form-control"
-            defaultValue={get(data, 'locations.data[0].admin_area_2')}
-            name="[locations][data][0][address][data][admin_area_2]"
-            ref={register({
-              required: 'Required',
-            })}
-            type="text"
-          />
-        </FormGroup>
+        <AddressFormFields
+          data={data}
+          errors={errors}
+          namespace="[locations][data][0]"
+          register={register}
+          setValue={setValue}
+        />
       </div>
     </div>
   </div>

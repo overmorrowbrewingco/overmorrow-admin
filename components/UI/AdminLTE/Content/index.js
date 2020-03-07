@@ -20,6 +20,7 @@ const Content = ({ breadcrumbs = [], children, title, titleButton }) => (
                       ? 'breadcrumb-item'
                       : 'breadcrumb-item active'
                   }
+                  key={index}
                 >
                   {index < breadcrumbs.length - 1 ? (
                     <Link as={bc.as} href={bc.href}>
