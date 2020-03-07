@@ -19,6 +19,7 @@ const StepTwo = ({ data, errors, register }) => (
       <div className="col-sm-6">
         <FormGroup error={errors.website} label="Website" name="website">
           <input
+            autocomplete="url"
             className="form-control"
             defaultValue={get(data, 'website')}
             name="website"
@@ -35,6 +36,7 @@ const StepTwo = ({ data, errors, register }) => (
           name="phone_number"
         >
           <input
+            autocomplete="tel"
             className="form-control"
             defaultValue={get(data, 'phone_number')}
             name="phone_number"
@@ -49,6 +51,7 @@ const StepTwo = ({ data, errors, register }) => (
       <div className="col-sm-6">
         <FormGroup error={errors.email} label="Email" name="email">
           <input
+            autocomplete="email"
             className="form-control"
             defaultValue={get(data, 'email')}
             name="email"

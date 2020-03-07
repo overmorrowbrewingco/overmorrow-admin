@@ -5,16 +5,10 @@ import FormGroup from '~/components/UI/AdminLTE/FormGroup';
 
 const StepOne = ({ data, errors, register }) => (
   <div className="card-body">
-    <input
-      name="customer[data][customer_type]"
-      ref={register()}
-      type="hidden"
-      value="business"
-    />
     <div className="row">
       <div className="col-sm-6">
         <FormGroup
-          error={get(errors, 'customer.name')}
+          error={get(errors, 'customer.data.name')}
           label="Business Name"
           name="customer[data][name]"
         >

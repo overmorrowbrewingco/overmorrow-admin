@@ -98,6 +98,7 @@ const StepThree = ({ data, errors, register }) => (
           name="[locations][data][0][address][data][address_line_1]"
         >
           <input
+            autocomplete="address-line1"
             className="form-control"
             defaultValue={get(data, 'locations.data[0].address_line_1')}
             name="[locations][data][0][address][data][address_line_1]"
@@ -116,6 +117,7 @@ const StepThree = ({ data, errors, register }) => (
           name="[locations][data][0][address][data][address_line_2]"
         >
           <input
+            autocomplete="address-line2"
             className="form-control"
             defaultValue={get(data, 'locations.data[0].address_line_2')}
             name="[locations][data][0][address][data][address_line_2]"
@@ -134,6 +136,7 @@ const StepThree = ({ data, errors, register }) => (
           name="[locations][data][0][address][data][admin_area_3]"
         >
           <input
+            autocomplete="address-level3"
             className="form-control"
             defaultValue={get(data, 'locations.data[0].admin_area_3')}
             name="[locations][data][0][address][data][admin_area_3]"
@@ -152,6 +155,7 @@ const StepThree = ({ data, errors, register }) => (
           name="[locations][data][0][address][data][admin_area_2]"
         >
           <input
+            autocomplete="address-level2"
             className="form-control"
             defaultValue={get(data, 'locations.data[0].admin_area_2')}
             name="[locations][data][0][address][data][admin_area_2]"

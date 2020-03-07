@@ -10,6 +10,7 @@ const StepFour = ({ data, errors, register }) => (
     <div className="row">
       <div className="col-sm-6">
         <FormGroup
+          autocomplete="name"
           error={get(errors, 'primary_contact.data.full_name')}
           label="Full Name"
           name="contacts[data][0][full_name]"
@@ -28,6 +29,7 @@ const StepFour = ({ data, errors, register }) => (
 
       <div className="col-sm-6">
         <FormGroup
+          autocomplete="nickname"
           error={get(errors, 'primary_contact.data.preferred_name')}
           label="Preferred Name"
           name="contacts[data][0][preferred_name]"
@@ -147,6 +149,7 @@ const StepFour = ({ data, errors, register }) => (
           name="contacts[data][0][phone_number]"
         >
           <input
+            autocomplete="email"
             className="form-control"
             defaultValue={get(data, 'primary_contact.data.phone_number')}
             name="contacts[data][0][phone_number]"
