@@ -1,0 +1,24 @@
+@import "~bootstrap/scss/functions";
+@import '~bootstrap/scss/variables';
+
+.StepForm {
+  .breadcrumb {
+    background: none;
+
+    button {
+      background: inherit;
+      border: none;
+      color: inherit;
+    }
+  }
+
+  &__loading {
+    background: rgba($black, 0.1);
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 100;
+  }
+}
