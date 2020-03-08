@@ -57,12 +57,13 @@ const StepForm = ({
     <div className="StepForm">
       {showBreadcrumbs && (
         <nav aria-label="breadcrumb">
-          <ol class="breadcrumb mb-0">
+          <ol className="breadcrumb mb-0">
             {steps.slice(0, currentStep).map((step, index) => (
               <li
                 className={cx('breadcrumb-item', {
                   active: index + 1 === currentStep,
                 })}
+                key={index}
               >
                 Step {index + 1}
               </li>

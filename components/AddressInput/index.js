@@ -77,6 +77,14 @@ const AddressInput = ({ className, name, onSelect }) => {
   return (
     <input
       className={cx(className, 'form-control')}
+      onKeyDown={(e) => {
+        // FIXME: For some reason Google's API binds weird behavior to the
+        // enter key here. This disables enter on the input, but could probably
+        // be handled better somehow.
+        if (e.keyCode && e.keyCode === 13) {
+          e.preventDefault();
+        }
+      }}
       name={name}
       ref={inputRef}
       type="text"
