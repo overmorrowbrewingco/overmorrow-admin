@@ -2,7 +2,9 @@ import React from 'react';
 import { get } from 'lodash';
 
 import AddressInput from '~/components/AddressInput';
-import FormGroup from '~/components/UI/AdminLTE/FormGroup';
+import FormGroup from '~/components/UI/FormGroup';
+import FormInput from '~/components/UI/FormInput';
+import FormTextArea from '~/components/UI/FormTextArea';
 
 const AddressFormFields = ({
   data,
@@ -12,33 +14,34 @@ const AddressFormFields = ({
   setValue,
 }) => {
   const onAddressSelect = (d) => {
-    setValue([
-      {
-        [`${namespace}[address_full]`]: d.addressFull || null,
-      },
-      {
-        [`${namespace}[address_html]`]: d.addressHtml || null,
-      },
-      {
-        [`${namespace}[district]`]: d.district || null,
-      },
-      {
-        [`${namespace}[city]`]: d.city || null,
-      },
-      {
-        [`${namespace}[latitude]`]: d.location.lat || null,
-      },
-      {
-        [`${namespace}[longitude]`]: d.location.lng || null,
-      },
-    ]);
+    const createValueMap = (fields = []) =>
+      fields.map((field) => ({
+        [`${namespace}[${field}]`]: get(d, field) || null,
+      }));
+
+    setValue(
+      createValueMap([
+        'address_full',
+        'address_html',
+        'city',
+        'district',
+        'latitude',
+        'longitude',
+      ]),
+    );
   };
 
   return (
     <div>
       <div className="row">
         <div className="col-sm-12">
-          <FormGroup label="Address" name="address_full">
+          <FormGroup
+            data={data}
+            errors={errors}
+            label="Address"
+            info="Select an address from the autocomplete input to populate the fields below."
+            name="address_autocomplete"
+          >
             <AddressInput
               name="address_autocomplete"
               onSelect={onAddressSelect}
@@ -49,128 +52,88 @@ const AddressFormFields = ({
 
       <div className="row">
         <div className="col-sm-12">
-          <small className="form-text mb-3 text-muted">
-            Select an address from the autocomplete input to populate the fields
-            below.
-          </small>
-          <hr />
-        </div>
-      </div>
-
-      <div className="row">
-        <div className="col-sm-12">
-          <FormGroup
-            error={get(errors, `${namespace}[address_full]`)}
+          <FormInput
+            data={data}
+            disabled
+            errors={errors}
             label="Full Address"
             name={`${namespace}[address_full]`}
-          >
-            <input
-              className="form-control"
-              defaultValue={get(data, `${namespace}[address_full]`)}
-              disabled
-              name={`${namespace}[address_full]`}
-              ref={register({ required: true })}
-              type="text"
-            />
-          </FormGroup>
+            ref={register({ required: true })}
+            type="text"
+          />
         </div>
       </div>
 
       <div className="row">
         <div className="col-sm-12">
-          <FormGroup
-            error={get(errors, `${namespace}[address_html]`)}
-            label="Address in HTML"
+          <FormTextArea
+            data={data}
+            disabled
+            errors={errors}
+            label="Address (HTML)"
             name={`${namespace}[address_html]`}
-          >
-            <textarea
-              className="form-control"
-              defaultValue={get(data, `${namespace}[address_html]`)}
-              disabled
-              name={`${namespace}[address_html]`}
-              ref={register({ required: true })}
-              rows={3}
-            />
-          </FormGroup>
+            ref={register({ required: true })}
+            rows={3}
+            type="text"
+          />
         </div>
       </div>
 
       <div className="row">
         <div className="col-sm-6">
-          <FormGroup
-            error={get(errors, `${namespace}[district]`)}
+          <FormInput
+            data={data}
+            disabled
+            errors={errors}
             label="District"
             name={`${namespace}[district]`}
-          >
-            <input
-              autoComplete="address-level3"
-              className="form-control"
-              defaultValue={get(data, `${namespace}[district]`)}
-              disabled
-              name={`${namespace}[district]`}
-              ref={register()}
-              type="text"
-            />
-          </FormGroup>
+            ref={register()}
+            type="text"
+          />
         </div>
 
         <div className="col-sm-6">
-          <FormGroup
-            error={get(errors, `${namespace}[city]`)}
+          <FormInput
+            data={data}
+            disabled
+            errors={errors}
             label="City"
             name={`${namespace}[city]`}
-          >
-            <input
-              className="form-control"
-              defaultValue={get(data, `${namespace}[city]`)}
-              disabled
-              name={`${namespace}[city]`}
-              ref={register({
-                required: 'Required',
-              })}
-              type="text"
-            />
-          </FormGroup>
+            ref={register({
+              required: 'Required',
+            })}
+            type="text"
+          />
         </div>
       </div>
 
       <div className="row">
         <div className="col-sm-6">
-          <FormGroup
-            error={get(errors, `${namespace}[latitude]`)}
+          <FormInput
+            data={data}
+            disabled
+            errors={errors}
             label="Latitude"
             name={`${namespace}[latitude]`}
-          >
-            <input
-              className="form-control"
-              defaultValue={get(data, `${namespace}[latitude]`)}
-              disabled
-              name={`${namespace}[latitude]`}
-              ref={register({
-                required: 'Required',
-              })}
-              type="text"
-            />
-          </FormGroup>
+            ref={register({
+              required: 'Required',
+            })}
+            type="text"
+          />
         </div>
 
         <div className="col-sm-6">
-          <FormGroup
-            error={get(errors, `${namespace}[longitude]`)}
+          <FormInput
+            data={data}
+            disabled
+            errors={errors}
             label="Longitude"
             name={`${namespace}[longitude]`}
-          >
-            <input
-              className="form-control"
-              defaultValue={get(data, `${namespace}[longitude]`)}
-              disabled
-              name={`${namespace}[longitude]`}
-              ref={register({
-                required: 'Required',
-              })}
-              type="text"
-            />
-          </FormGroup>
+            ref={register({
+              required: 'Required',
+            })}
+            type="text"
+          />
         </div>
       </div>
     </div>

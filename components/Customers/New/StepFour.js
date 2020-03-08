@@ -1,196 +1,140 @@
 import React from 'react';
-import { get } from 'lodash';
 
-import FormGroup from '~/components/UI/AdminLTE/FormGroup';
+import Input from '~/components/UI/AdminLTE/Input';
+import FormInput from '~/components/UI/FormInput';
+import FormSelect from '~/components/UI/FormSelect';
 
 const StepFour = ({ data, errors, register }) => (
   <div className="card-body">
-    <input name="contacts[data][0]primary" type="hidden" value={true} />
+    <Input name="contacts[data][0]primary" type="hidden" value={true} />
 
     <div className="row">
       <div className="col-sm-6">
-        <FormGroup
+        <FormInput
           autoComplete="name"
-          error={get(errors, 'primary_contact.data.full_name')}
+          data={data}
+          errors={errors}
           label="Full Name"
           name="contacts[data][0][full_name]"
-        >
-          <input
-            className="form-control"
-            defaultValue={get(data, 'primary_contact.data.full_name')}
-            name="contacts[data][0][full_name]"
-            ref={register({
-              required: 'Required',
-            })}
-            type="text"
-          />
-        </FormGroup>
+          ref={register({
+            required: 'Required',
+          })}
+          type="text"
+        />
       </div>
 
       <div className="col-sm-6">
-        <FormGroup
+        <FormInput
           autoComplete="nickname"
-          error={get(errors, 'primary_contact.data.preferred_name')}
+          data={data}
+          errors={errors}
           label="Preferred Name"
           name="contacts[data][0][preferred_name]"
-        >
-          <input
-            className="form-control"
-            defaultValue={get(data, 'primary_contact.data.preferred_name')}
-            name="contacts[data][0][preferred_name]"
-            ref={register()}
-            type="text"
-          />
-        </FormGroup>
+          ref={register()}
+          type="text"
+        />
       </div>
     </div>
 
     <div className="row">
       <div className="col-sm-6">
-        <FormGroup
-          error={get(errors, 'primary_contact.data.title')}
+        <FormInput
+          data={data}
+          errors={errors}
           label="Title"
           name="contacts[data][0][title]"
-        >
-          <input
-            className="form-control"
-            defaultValue={get(data, 'primary_contact.data.title')}
-            name="contacts[data][0][title]"
-            ref={register({
-              required: 'Required',
-            })}
-            type="text"
-          />
-        </FormGroup>
+          ref={register({
+            required: 'Required',
+          })}
+          type="text"
+        />
       </div>
 
       <div className="col-sm-6">
-        <FormGroup
-          error={get(errors, 'primary_contact.data.gender')}
+        <FormInput
+          data={data}
+          errors={errors}
           label="Gender"
           name="contacts[data][0][gender]"
-        >
-          <input
-            className="form-control"
-            defaultValue={get(data, 'primary_contact.data.gender')}
-            name="contacts[data][0][gender]"
-            ref={register()}
-            type="text"
-          />
-        </FormGroup>
+          ref={register()}
+          type="text"
+        />
       </div>
     </div>
 
     <div className="row">
       <div className="col-sm-6">
-        <FormGroup
-          error={get(errors, 'primary_contact.data.preferred_language')}
+        <FormSelect
+          data={data}
+          errors={errors}
           label="Preferred Language"
           name="contacts[data][0][preferred_language]"
-        >
-          <select
-            className="form-control"
-            defaultValue={get(data, 'primary_contact.data.preferred_language')}
-            name="contacts[data][0][preferred_language]"
-            ref={register()}
-            type="text"
-          >
-            <option value="" />
-            <option value="English">English</option>
-            <option value="Vietnamese">Vietnamese</option>
-          </select>
-        </FormGroup>
+          options={[
+            { label: 'English', value: 'english' },
+            { label: 'Vietnamese', value: 'vietnamese' },
+          ]}
+          ref={register()}
+        />
       </div>
 
       <div className="col-sm-6">
-        <FormGroup
-          error={get(
-            errors,
-            'primary_contact.data.preferred_communication_method',
-          )}
+        <FormInput
+          data={data}
+          errors={errors}
           label="Preferred Communication Method"
           name="contacts[data][0][preferred_communication_method]"
-        >
-          <input
-            className="form-control"
-            defaultValue={get(
-              data,
-              'primary_contact.data.preferred_communication_method',
-            )}
-            name="contacts[data][0][preferred_communication_method]"
-            ref={register()}
-            type="text"
-          />
-        </FormGroup>
+          ref={register()}
+          type="text"
+        />
       </div>
     </div>
 
     <div className="row">
       <div className="col-sm-6">
-        <FormGroup
-          error={get(errors, 'primary_contact.data.email')}
+        <FormInput
+          data={data}
+          errors={errors}
           label="Email"
           name="contacts[data][0][email]"
-        >
-          <input
-            className="form-control"
-            defaultValue={get(data, 'primary_contact.data.email')}
-            name="contacts[data][0][email]"
-            ref={register()}
-            type="email"
-          />
-        </FormGroup>
+          ref={register()}
+          type="email"
+        />
       </div>
 
       <div className="col-sm-6">
-        <FormGroup
-          error={get(errors, 'primary_contact.data.phone_number')}
+        <FormInput
+          autoComplete="email"
+          data={data}
+          errors={errors}
           label="Phone Number"
           name="contacts[data][0][phone_number]"
-        >
-          <input
-            autoComplete="email"
-            className="form-control"
-            defaultValue={get(data, 'primary_contact.data.phone_number')}
-            name="contacts[data][0][phone_number]"
-            ref={register()}
-            type="tel"
-          />
-        </FormGroup>
+          ref={register()}
+          type="tel"
+        />
       </div>
     </div>
 
     <div className="row">
       <div className="col-sm-6">
-        <FormGroup
-          error={get(errors, 'primary_contact.data.facebook_username')}
+        <FormInput
+          data={data}
+          errors={errors}
           label="Facebook Username"
           name="contacts[data][0][facebook_username]"
-        >
-          <input
-            className="form-control"
-            defaultValue={get(data, 'primary_contact.data.facebook_username')}
-            name="contacts[data][0][facebook_username]"
-            ref={register()}
-            type="text"
-          />
-        </FormGroup>
+          ref={register()}
+          type="text"
+        />
       </div>
 
       <div className="col-sm-6">
-        <FormGroup
-          error={get(errors, 'primary_contact.data.instagram_username')}
+        <FormInput
+          data={data}
+          errors={errors}
           label="Instagram Username"
           name="contacts[data][0][instagram_username]"
-        >
-          <input
-            className="form-control"
-            defaultValue={get(data, 'primary_contact.data.instagram_username')}
-            name="contacts[data][0][instagram_username]"
-            ref={register()}
-            type="text"
-          />
-        </FormGroup>
+          ref={register()}
+          type="text"
+        />
       </div>
     </div>
   </div>

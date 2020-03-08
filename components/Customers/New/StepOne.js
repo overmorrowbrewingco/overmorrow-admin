@@ -1,10 +1,12 @@
 import React from 'react';
-import { get } from 'lodash';
 
-import FormGroup from '~/components/UI/AdminLTE/FormGroup';
+import FormInput from '~/components/UI/FormInput';
+import FormSelect from '~/components/UI/FormSelect';
+import FormTextArea from '~/components/UI/FormTextArea';
 
 const StepOne = ({ data, errors, register }) => (
   <div className="card-body">
+    {/* Hidden customer_type value, must be set to business */}
     <input
       name="customer[data][customer_type]"
       ref={register()}
@@ -14,60 +16,45 @@ const StepOne = ({ data, errors, register }) => (
 
     <div className="row">
       <div className="col-sm-6">
-        <FormGroup
-          error={get(errors, 'customer.data.name')}
+        <FormInput
+          data={data}
+          errors={errors}
           label="Business Name"
           name="customer[data][name]"
-        >
-          <input
-            className="form-control"
-            defaultValue={get(data, 'customer.data.name')}
-            name="customer[data][name]"
-            ref={register({
-              required: 'Required',
-            })}
-            type="text"
-          />
-        </FormGroup>
+          ref={register({
+            required: 'Required',
+          })}
+          type="text"
+        />
       </div>
 
       <div className="col-sm-6">
-        <FormGroup
-          error={errors.account_status}
+        <FormSelect
+          data={data}
+          errors={errors}
           label="Account Status"
           name="account_status"
-        >
-          <select
-            className="form-control"
-            defaultValue={get(data, 'account_status')}
-            name="account_status"
-            ref={register({ required: 'Required' })}
-          >
-            <option value="" />
-            <option value="potential">Potential</option>
-            <option value="pending">Pending</option>
-            <option value="active">Active</option>
-            <option value="inactive">Inactive</option>
-          </select>
-        </FormGroup>
+          ref={register({ required: 'Required' })}
+          options={[
+            { value: 'potential', label: 'Potential' },
+            { value: 'pending', label: 'Pending' },
+            { value: 'active', label: 'Active' },
+            { value: 'inactive', label: 'Inactive' },
+          ]}
+        />
       </div>
     </div>
 
     <div className="row">
       <div className="col-sm-12">
-        <FormGroup
-          defaultValue={get(data, 'customer.data.description')}
-          errors={get(errors, 'customer.data.description')}
+        <FormTextArea
+          data={data}
+          errors={errors}
           label="Description"
           name="customer[data][description]"
-        >
-          <textarea
-            className="form-control"
-            name="customer[data][description]"
-            ref={register()}
-            rows={3}
-          />
-        </FormGroup>
+          ref={register()}
+          rows={3}
+        />
       </div>
     </div>
   </div>

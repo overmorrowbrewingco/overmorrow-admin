@@ -1,7 +1,6 @@
 import React from 'react';
-import { get } from 'lodash';
 
-import FormGroup from '~/components/UI/AdminLTE/FormGroup';
+import FormInput from '~/components/UI/FormInput';
 
 const StepTwo = ({ data, errors, register }) => (
   <div className="card-body">
@@ -17,81 +16,65 @@ const StepTwo = ({ data, errors, register }) => (
 
     <div className="row">
       <div className="col-sm-6">
-        <FormGroup error={errors.website} label="Website" name="website">
-          <input
-            autoComplete="url"
-            className="form-control"
-            defaultValue={get(data, 'website')}
-            name="website"
-            ref={register()}
-            type="url"
-          />
-        </FormGroup>
+        <FormInput
+          autoComplete="url"
+          data={data}
+          errors={errors}
+          label="Website"
+          name="website"
+          ref={register()}
+          type="url"
+        />
       </div>
 
       <div className="col-sm-6">
-        <FormGroup
-          error={errors.phone_number}
+        <FormInput
+          autoComplete="tel"
+          data={data}
+          errors={errors}
           label="Phone Number"
           name="phone_number"
-        >
-          <input
-            autoComplete="tel"
-            className="form-control"
-            defaultValue={get(data, 'phone_number')}
-            name="phone_number"
-            ref={register()}
-            type="tel"
-          />
-        </FormGroup>
+          ref={register()}
+          type="tel"
+        />
       </div>
     </div>
 
     <div className="row">
       <div className="col-sm-6">
-        <FormGroup error={errors.email} label="Email" name="email">
-          <input
-            autoComplete="email"
-            className="form-control"
-            defaultValue={get(data, 'email')}
-            name="email"
-            ref={register()}
-            type="email"
-          />
-        </FormGroup>
+        <FormInput
+          autoComplete="email"
+          data={data}
+          errors={errors}
+          label="Email"
+          name="email"
+          ref={register()}
+          type="email"
+        />
       </div>
 
       <div className="col-sm-6">
-        <FormGroup
-          error={errors.facebook_username}
+        <FormInput
+          data={data}
+          errors={errors}
           label="Facebook Username"
           name="facebook_username"
-        >
-          <input
-            className="form-control"
-            defaultValue={get(data, 'facebook_username')}
-            name="facebook_username"
-            ref={register()}
-            type="text"
-          />
-        </FormGroup>
+          ref={register()}
+          type="text"
+        />
       </div>
     </div>
+
     <div className="row">
       <div className="col-sm-6">
-        <FormGroup
-          error={errors.instagram_username}
+        <FormInput
+          data={data}
+          errors={errors}
           label="Instagram Username"
           name="instagram_username"
-        >
-          <input
-            className="form-control"
-            defaultValue={get(data, 'instagram_username')}
-            name="instagram_username"
-            ref={register()}
-            type="text"
-          />
-        </FormGroup>
+          ref={register()}
+          type="text"
+        />
       </div>
     </div>
   </div>

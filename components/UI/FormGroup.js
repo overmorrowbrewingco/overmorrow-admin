@@ -1,9 +1,11 @@
 import React, { Children } from 'react';
 import cx from 'classnames';
-import PropTypes from 'prop-types';
+import { get } from 'lodash';
 
-const FormGroup = ({ children, error, info, name, label, ...props }) => {
+const FormGroup = ({ children, data, errors, info, label, name, ...props }) => {
   const child = Children.only(children);
+
+  const error = get(errors, name);
 
   let className = child.props.className || '';
 
@@ -38,13 +40,6 @@ const FormGroup = ({ children, error, info, name, label, ...props }) => {
       )}
     </div>
   );
-};
-
-FormGroup.propTypes = {
-  className: PropTypes.string,
-  info: PropTypes.string,
-  name: PropTypes.string.isRequired,
-  label: PropTypes.string,
 };
 
 export default FormGroup;
