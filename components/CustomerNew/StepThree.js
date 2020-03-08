@@ -50,7 +50,7 @@ const CustomerNewStepThree = ({ data, errors, register, setValue }) => (
         <AddressFormFields
           data={data}
           errors={errors}
-          namespace="[locations][data][0]"
+          namespace="[locations][data][0][address][data]"
           register={register}
           setValue={setValue}
         />

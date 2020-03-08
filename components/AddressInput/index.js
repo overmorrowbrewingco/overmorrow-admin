@@ -62,9 +62,8 @@ const AddressInput = ({ className, name, onSelect }) => {
       onSelect({
         city,
         district,
-        address_html: place.adr_address,
-        address_full: place.formatted_address,
-
+        formatted: place.formatted_address,
+        html: place.adr_address,
         latitude: place.geometry.location.lat(),
         longitude: place.geometry.location.lng(),
       });

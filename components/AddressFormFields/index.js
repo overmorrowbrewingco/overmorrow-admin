@@ -21,10 +21,10 @@ const AddressFormFields = ({
 
     setValue(
       createValueMap([
-        'address_full',
-        'address_html',
         'city',
         'district',
+        'formatted',
+        'html',
         'latitude',
         'longitude',
       ]),
@@ -57,7 +57,7 @@ const AddressFormFields = ({
             disabled
             errors={errors}
             label="Full Address"
-            name={`${namespace}[address_full]`}
+            name={`${namespace}[formatted]`}
             ref={register({ required: true })}
             type="text"
           />
@@ -71,7 +71,7 @@ const AddressFormFields = ({
             disabled
             errors={errors}
             label="Address (HTML)"
-            name={`${namespace}[address_html]`}
+            name={`${namespace}[html]`}
             ref={register({ required: true })}
             rows={3}
             type="text"

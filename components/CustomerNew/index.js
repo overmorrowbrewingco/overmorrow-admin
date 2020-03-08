@@ -54,7 +54,7 @@ const CustomersNew = () => {
 
   return (
     <div className="row justify-content-center mt-5">
-      <div className="col-sm-12">
+      <div className="col-sm-12 col-md-8">
         {error && <div className="alert alert-danger">{error.message}</div>}
 
         <StepForm
