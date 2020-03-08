@@ -4,8 +4,8 @@ import AddressFormFields from '~/components/AddressFormFields';
 import FormInput from '~/components/UI/FormInput';
 import FormTextArea from '~/components/UI/FormTextArea';
 
-const StepThree = ({ data, errors, register, setValue }) => (
-  <div className="card-body">
+const CustomerNewStepThree = ({ data, errors, register, setValue }) => (
+  <div className="CustomerNewStepThree card-body">
     <div className="row">
       <div className="col-sm-12">
         <small className="form-text mb-3 text-muted">
@@ -59,4 +59,4 @@ const StepThree = ({ data, errors, register, setValue }) => (
   </div>
 );
 
-export default StepThree;
+export default CustomerNewStepThree;

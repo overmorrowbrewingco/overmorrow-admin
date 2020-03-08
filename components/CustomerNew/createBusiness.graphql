@@ -1,0 +1,5 @@
+mutation CREATE_BUSINESS($business: [business_insert_input!]!) {
+  insert_business(objects: $business) {
+    affected_rows
+  }
+}

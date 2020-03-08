@@ -2,8 +2,8 @@ import React from 'react';
 
 import FormInput from '~/components/UI/FormInput';
 
-const StepTwo = ({ data, errors, register }) => (
-  <div className="card-body">
+const CustomerNewStepTwo = ({ data, errors, register }) => (
+  <div className="CustomerNewStepTwo card-body">
     <div className="row">
       <div className="col-sm-12">
         <small className="form-text mb-3 text-muted">
@@ -80,4 +80,4 @@ const StepTwo = ({ data, errors, register }) => (
   </div>
 );
 
-export default StepTwo;
+export default CustomerNewStepTwo;

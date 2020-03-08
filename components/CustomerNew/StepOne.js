@@ -4,8 +4,8 @@ import FormInput from '~/components/UI/FormInput';
 import FormSelect from '~/components/UI/FormSelect';
 import FormTextArea from '~/components/UI/FormTextArea';
 
-const StepOne = ({ data, errors, register }) => (
-  <div className="card-body">
+const CustomerNewStepOne = ({ data, errors, register }) => (
+  <div className="CustomerNewStepOne card-body">
     {/* Hidden customer_type value, must be set to business */}
     <input
       name="customer[data][customer_type]"
@@ -60,4 +60,4 @@ const StepOne = ({ data, errors, register }) => (
   </div>
 );
 
-export default StepOne;
+export default CustomerNewStepOne;

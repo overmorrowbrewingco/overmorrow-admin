@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 
 import Content from '~/components/UI/AdminLTE/Content';
-import CustomersNew from '~/components/Customers/New';
+import CustomerNew from '~/components/CustomerNew';
 
 const CustomersNewBusinessPage = () => {
   const breadcrumbs = [
@@ -26,7 +26,7 @@ const CustomersNewBusinessPage = () => {
         <title>New Business</title>
       </Head>
 
-      <CustomersNew />
+      <CustomerNew />
     </Content>
   );
 };

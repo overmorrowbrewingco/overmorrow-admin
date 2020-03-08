@@ -4,8 +4,8 @@ import Input from '~/components/UI/AdminLTE/Input';
 import FormInput from '~/components/UI/FormInput';
 import FormSelect from '~/components/UI/FormSelect';
 
-const StepFour = ({ data, errors, register }) => (
-  <div className="card-body">
+const CustomerNewStepFour = ({ data, errors, register }) => (
+  <div className="CustomerNewStepFour card-body">
     <Input name="contacts[data][0]primary" type="hidden" value={true} />
 
     <div className="row">
@@ -140,4 +140,4 @@ const StepFour = ({ data, errors, register }) => (
   </div>
 );
 
-export default StepFour;
+export default CustomerNewStepFour;
