@@ -12,7 +12,13 @@ require('dotenv').config();
 module.exports = withGraphql(
   withImages(
     withSass({
-      generateBuildId: () => nextBuildId({ dir: __dirname }),
+      generateBuildId: () => {
+        if (process.env.SOURCE_VERSION) {
+          return `cust-next-build-${process.env.SOURCE_VERSION}`;
+        }
+
+        return nextBuildId({ dir: __dirname });
+      },
       sassLoaderOptions: {
         sassOptions: {
           indentWidth: 2,
