@@ -4,6 +4,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import { useRouter } from 'next/router';
 
 import createClient from '~/apollo/createClient';
+import CurrentUserWrapper from '~/components/CurrentUserWrapper';
 import Loading from '~/components/Loading';
 import Header from '~/components/UI/AdminLTE/Header';
 import Sidebar from '~/components/UI/AdminLTE/Sidebar';
@@ -37,31 +38,35 @@ const LoggedInLayout = ({ children }) => {
   });
 
   if (!token) {
-    return <Loading />;
+    return null;
   }
 
   const toggleSidebar = () => setSidebarCollapsed(!sidebarCollapsed);
 
   return (
-    <ApolloProvider client={createClient(token)}>
-      <div
-        className={cx('sidebar-mini', 'wrapper', {
-          'sidebar-collapse': sidebarCollapsed,
-        })}
-      >
-        <Header toggleSidebar={toggleSidebar} />
+    <ApolloProvider client={createClient(logout, token)}>
+      <CurrentUserWrapper>
+        <div
+          className={cx('sidebar-mini', 'wrapper', {
+            'sidebar-collapse': sidebarCollapsed,
+          })}
+        >
+          <Header toggleSidebar={toggleSidebar} />
 
-        <Sidebar>
-          <UserPanel />
+          <Sidebar>
+            <UserPanel />
 
-          <SidebarMenu>
-            <SidebarMenuNavLink href="/">Home</SidebarMenuNavLink>
-            <SidebarMenuNavLink href="/customers">Customers</SidebarMenuNavLink>
-          </SidebarMenu>
-        </Sidebar>
+            <SidebarMenu>
+              <SidebarMenuNavLink href="/">Home</SidebarMenuNavLink>
+              <SidebarMenuNavLink href="/customers">
+                Customers
+              </SidebarMenuNavLink>
+            </SidebarMenu>
+          </Sidebar>
 
-        {children}
-      </div>
+          {children}
+        </div>
+      </CurrentUserWrapper>
     </ApolloProvider>
   );
 };

@@ -30,16 +30,12 @@ const AddressInput = ({ className, name, onSelect }) => {
           type: ['address', 'establishment'],
         }),
       );
-
-      // autocomplete
     }
   }, [autocomplete, ready, status]);
 
   useEffect(() => {
     const handlePlaceChanged = () => {
       const place = autocomplete.getPlace();
-
-      // console.log(place);
 
       const city = get(
         findAddressComponentByType(
@@ -48,8 +44,6 @@ const AddressInput = ({ className, name, onSelect }) => {
         ),
         'long_name',
       );
-
-      // console.log(city);
 
       const district = get(
         findAddressComponentByType(
