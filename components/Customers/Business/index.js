@@ -10,7 +10,7 @@ import PaginationControls from '~/components/UI/PaginationControls';
 
 const BusinessCustomers = ({ limit = 10 }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [orderBy, setOrderBy] = useState({ name: 'desc' });
+  const [orderBy, setOrderBy] = useState(null);
   const [status, setStatus] = useState(null);
 
   const offset = (currentPage - 1) * limit;

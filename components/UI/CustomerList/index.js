@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { DateTime } from 'luxon';
 import { get, set } from 'lodash';
 
@@ -38,27 +39,32 @@ const CustomerList = ({ customers = [], offset, orderBy, setOrderBy }) => {
       <thead>
         <tr>
           <th>#</th>
-          <TH namespace="name">Name</TH>
-          <TH namespace="created_at">Created On</TH>
-          <TH namespace="business[website]">Website</TH>
-          <TH namespace="business[locations_aggregate][count]">
-            # of Locations
+          <TH namespace="name">
+            <span className="text-nowrap">Name</span>
           </TH>
-          <TH namespace="business[account_status]">Account Status</TH>
+          <TH namespace="created_at">
+            <span className="text-nowrap">Created At</span>
+          </TH>
+          <TH namespace="business[locations_aggregate][count]">
+            <span className="text-nowrap"># of Locations</span>
+          </TH>
+          <TH namespace="business[account_status]">
+            <span className="text-nowrap">Account Status</span>
+          </TH>
+          <th />
         </tr>
       </thead>
 
       <tbody>
         {customers.map((customer, i) => (
           <tr key={customer.id}>
-            <th>{i + 1 + offset}</th>
+            <td>{i + 1 + offset}</td>
             <td>{customer.name}</td>
             <td>
-              {DateTime.fromISO(get(customer, 'created_at')).toFormat(
-                'LLL dd, yyyy',
+              {DateTime.fromISO(get(customer, 'created_at')).toLocaleString(
+                DateTime.DATETIME_SHORT,
               )}
             </td>
-            <td>{get(customer, 'business.website')}</td>
             <td>
               {get(customer, 'business.locations_aggregate.aggregate.count')}
             </td>
@@ -66,6 +72,19 @@ const CustomerList = ({ customers = [], offset, orderBy, setOrderBy }) => {
               <AccountStatusBadge
                 status={get(customer, 'business.account_status')}
               />
+            </td>
+            <td>
+              <Link href="/customers">
+                <a className="btn btn-primary btn-sm mr-2" href="/customers">
+                  View
+                </a>
+              </Link>
+
+              <Link href="/customers">
+                <a className="btn btn-secondary btn-sm" href="/customers">
+                  Edit
+                </a>
+              </Link>
             </td>
           </tr>
         ))}
