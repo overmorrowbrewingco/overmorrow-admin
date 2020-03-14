@@ -37,6 +37,7 @@
     "react-admin": "^3.2.3",
     "react-dom": "16.13.0",
     "react-hook-form": "^4.10.1",
+    "react-js-pagination": "^3.0.3",
     "webpack-filter-warnings-plugin": "^1.2.1"
   },
   "devDependencies": {
