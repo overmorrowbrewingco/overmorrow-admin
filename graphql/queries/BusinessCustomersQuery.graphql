@@ -1,5 +1,41 @@
-query BUSINESS_CUSTOMERS($orderBy: [customer_order_by!], $status: business_account_status_enum) {
-  customer(order_by: $orderBy, where: { business: { account_status: { _eq: $status } }, customer_type: { _eq: business } }) {
+query BUSINESS_CUSTOMERS(
+  $limit: Int,
+  $offset: Int,
+  $orderBy: [customer_order_by!],
+  $status: business_account_status_enum
+) {
+  customer_aggregate(
+    where: {
+      business: {
+        account_status: {
+          _eq: $status
+        }
+      },
+      customer_type: {
+        _eq: business
+      }
+    }
+  ) {
+    aggregate {
+      count
+    }
+  }
+
+  customer(
+    limit: $limit,
+    offset: $offset,
+    order_by: $orderBy,
+    where: {
+      business: {
+        account_status: {
+          _eq: $status
+        }
+      },
+      customer_type: {
+        _eq: business
+      }
+    }
+  ) {
     created_at
     id
     name

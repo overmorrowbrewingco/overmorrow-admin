@@ -4,7 +4,7 @@ import { get, set } from 'lodash';
 
 import AccountStatusBadge from '~/components/UI/AccountStatusBadge';
 
-const CustomerList = ({ customers = [], orderBy, setOrderBy }) => {
+const CustomerList = ({ customers = [], offset, orderBy, setOrderBy }) => {
   const SortIcon = ({ namespace }) => {
     if (get(orderBy, namespace) === 'desc')
       return <i className="fa fa-chevron-down" />;
@@ -37,6 +37,7 @@ const CustomerList = ({ customers = [], orderBy, setOrderBy }) => {
     <table className="table table-striped">
       <thead>
         <tr>
+          <th>#</th>
           <TH namespace="name">Name</TH>
           <TH namespace="created_at">Created On</TH>
           <TH namespace="business[website]">Website</TH>
@@ -48,8 +49,9 @@ const CustomerList = ({ customers = [], orderBy, setOrderBy }) => {
       </thead>
 
       <tbody>
-        {customers.map((customer) => (
+        {customers.map((customer, i) => (
           <tr key={customer.id}>
+            <th>{i + 1 + offset}</th>
             <td>{customer.name}</td>
             <td>
               {DateTime.fromISO(get(customer, 'created_at')).toFormat(

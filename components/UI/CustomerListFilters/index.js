@@ -7,7 +7,7 @@ const CustomerListFilters = ({ filters = [] }) => (
     <form>
       <div className="row">
         {filters.map((filter) => (
-          <div className="col-sm-4">
+          <div className="col-sm-4" key={filter.value}>
             <div className="form-group mb-2 mr-2" key={filter.name}>
               <label htmlFor={filter.name}>{filter.label}</label>
               <select
