@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { get } from 'lodash';
 import { gql } from 'apollo-boost';
@@ -45,16 +45,12 @@ const UserPanel = () => {
       </div>
 
       <div className="info">
-        <Link href="/users/[:id]" as={`/users/${hasuraUser.id}`}>
-          <Fragment>
-            <a className="d-block" href={`/users/${hasuraUser.id}`}>
-              {hasuraUser.username}
-            </a>
-          </Fragment>
+        <Link href="/" as={`/users/${hasuraUser.id}`}>
+          <a className="d-block" href={`/users/${hasuraUser.id}`}>
+            {hasuraUser.username}
+          </a>
         </Link>
       </div>
-
-      {/*<button className="btn btn-primary btn-block" onClick={logout}>Logout</button>*/}
     </div>
   );
 };
