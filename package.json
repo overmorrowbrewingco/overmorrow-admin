@@ -7,7 +7,7 @@
     "build": "next build",
     "heroku-postbuild": "npm run build",
     "lint": "eslint ./",
-    "start": "next start"
+    "start": "next start -p $PORT"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.3",
