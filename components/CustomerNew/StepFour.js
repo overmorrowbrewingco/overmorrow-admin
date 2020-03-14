@@ -6,7 +6,12 @@ import FormSelect from '~/components/UI/FormSelect';
 
 const CustomerNewStepFour = ({ data, errors, register }) => (
   <div className="CustomerNewStepFour card-body">
-    <Input name="contacts[data][0][primary]" type="hidden" value={true} />
+    <Input
+      name="contacts[data][0][primary]"
+      ref={register()}
+      type="hidden"
+      value={true}
+    />
 
     <div className="row">
       <div className="col-sm-6">
