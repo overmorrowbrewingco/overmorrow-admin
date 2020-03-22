@@ -7,7 +7,21 @@ import Loading from 'components/Loading';
 
 import './StepForm.scss';
 
-const StepForm = ({
+export type Step = {
+  Component: JSX.Element | JSX.Element[];
+  title: string;
+};
+
+interface Props {
+  loading?: boolean;
+  onCancel: Function;
+  onSubmit: Function;
+  showBreadcrumbs?: boolean;
+  showHeader?: boolean;
+  steps: Step[];
+}
+
+const StepForm: React.FC = ({
   loading,
   onCancel,
   onSubmit,
@@ -22,12 +36,13 @@ const StepForm = ({
 
   const lastStep = steps.length;
 
-  const onStepForwards = () =>
+  const onStepForwards = (): void => {
     currentStep >= lastStep
       ? setCurrentStep(currentStep)
       : setCurrentStep(currentStep + 1);
+  };
 
-  const onStepBackwards = (e) => {
+  const onStepBackwards = (e): void => {
     e.preventDefault();
 
     if (currentStep <= 1) {
@@ -37,7 +52,7 @@ const StepForm = ({
     }
   };
 
-  const onFormSubmit = (values) => {
+  const onFormSubmit = (values): void => {
     if (currentStep === lastStep) {
       onSubmit(merge(data, values));
     } else {
@@ -46,7 +61,7 @@ const StepForm = ({
     }
   };
 
-  const NullWrapper = ({ children }) => children;
+  const NullWrapper = ({ children }): JSX.Element | JSX.Element[] => children;
 
   const ButtonWrapper = props.ButtonWrapper || NullWrapper;
   const HeaderWrapper = props.HeaderWrapper || NullWrapper;
@@ -89,7 +104,7 @@ const StepForm = ({
               <button
                 className="btn btn-danger float-left"
                 disabled={loading}
-                onClick={(e) => {
+                onClick={(e): void => {
                   e.preventDefault();
                   onCancel();
                 }}

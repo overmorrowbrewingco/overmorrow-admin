@@ -13,13 +13,17 @@ interface Props {
   setOrderBy: Function;
 }
 
+interface ElementProps {
+  namespace: string;
+}
+
 const CustomerList: React.FC<Props> = ({
   customers = [],
   offset,
   orderBy,
   setOrderBy,
 }) => {
-  const SortIcon: React.FC = ({ namespace }) => {
+  const SortIcon: React.FC<ElementProps> = ({ namespace }) => {
     if (get(orderBy, namespace) === 'desc')
       return <i className="fa fa-chevron-down" />;
 
@@ -29,7 +33,7 @@ const CustomerList: React.FC<Props> = ({
     return null;
   };
 
-  const toggleSort: React.FC = (namespace) => {
+  const toggleSort: void = (namespace) => {
     const newOrderBy = {};
 
     if (get(orderBy, namespace) === 'desc') {
@@ -41,8 +45,8 @@ const CustomerList: React.FC<Props> = ({
     setOrderBy(newOrderBy);
   };
 
-  const TH: React.FC = ({ children, namespace }) => (
-    <th className="TH" onClick={() => toggleSort(namespace)}>
+  const TH: React.FC<ElementProps> = ({ children, namespace }) => (
+    <th className="TH" onClick={(): void => toggleSort(namespace)}>
       {children} <SortIcon namespace={namespace} />
     </th>
   );

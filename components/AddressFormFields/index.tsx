@@ -6,15 +6,23 @@ import FormGroup from 'components/UI/FormGroup';
 import FormInput from 'components/UI/FormInput';
 import FormTextArea from 'components/UI/FormTextArea';
 
-const AddressFormFields = ({
+interface Props {
+  data?: {};
+  errors?: {};
+  namespace: string;
+  register: Function;
+  setValue: Function;
+}
+
+const AddressFormFields: React.FC = ({
   data,
   errors,
   namespace = '',
   register,
   setValue,
 }) => {
-  const onAddressSelect = (d) => {
-    const createValueMap = (fields = []) =>
+  const onAddressSelect = (d): void => {
+    const createValueMap = (fields = []): object =>
       fields.map((field) => ({
         [`${namespace}[${field}]`]: get(d, field) || null,
       }));

@@ -2,8 +2,6 @@ import React from 'react';
 
 import capitalize from 'helpers/capitalize';
 
-import { StatusEnum } from './Status';
-
 export type FilterOption = {
   label: string;
   value: string;
@@ -31,7 +29,7 @@ const CustomerListFilters: React.FC<Props> = ({ filters = [] }) => (
               <label htmlFor={filter.name}>{filter.label}</label>
               <select
                 className="form-control form-control-sm"
-                onChange={(e): any =>
+                onChange={(e): void =>
                   filter.onChange(e.target.value === '' ? null : e.target.value)
                 }
                 name={filter.name}

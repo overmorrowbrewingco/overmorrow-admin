@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "heroku-postbuild": "npm run build",
-    "lint": "eslint ./",
+    "lint": "eslint --ext .ts --ext .tsx ./",
     "start": "next start -p $PORT"
   },
   "dependencies": {

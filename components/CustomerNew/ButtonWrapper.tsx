@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CustomerNewButtonWrapper = ({ children }) => (
+const CustomerNewButtonWrapper: React.FC = ({ children }) => (
   <div className="card-footer text-right">{children}</div>
 );
 

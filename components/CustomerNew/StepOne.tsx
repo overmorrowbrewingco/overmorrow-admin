@@ -4,7 +4,13 @@ import FormInput from 'components/UI/FormInput';
 import FormSelect from 'components/UI/FormSelect';
 import FormTextArea from 'components/UI/FormTextArea';
 
-const CustomerNewStepOne = ({ data, errors, register }) => (
+interface Props {
+  data?: {};
+  errors?: {};
+  register: Function;
+}
+
+const CustomerNewStepOne = ({ data, errors, register }): React.FC<Props> => (
   <div className="CustomerNewStepOne card-body">
     {/* Hidden customer_type value, must be set to business */}
     <input

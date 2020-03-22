@@ -41,7 +41,7 @@ const LoggedInLayout: React.FC = ({ children }) => {
     return null;
   }
 
-  const toggleSidebar = () => setSidebarCollapsed(!sidebarCollapsed);
+  const toggleSidebar = (): void => setSidebarCollapsed(!sidebarCollapsed);
 
   return (
     <ApolloProvider client={createClient(logout, token)}>

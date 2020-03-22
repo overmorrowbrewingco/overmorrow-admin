@@ -4,7 +4,19 @@ import AddressFormFields from 'components/AddressFormFields';
 import FormInput from 'components/UI/FormInput';
 import FormTextArea from 'components/UI/FormTextArea';
 
-const CustomerNewStepThree = ({ data, errors, register, setValue }) => (
+interface Props {
+  data?: {};
+  errors?: {};
+  register: Function;
+  setValue: Function;
+}
+
+const CustomerNewStepThree = ({
+  data,
+  errors,
+  register,
+  setValue,
+}): React.FC<Props> => (
   <div className="CustomerNewStepThree card-body">
     <div className="row">
       <div className="col-sm-12">

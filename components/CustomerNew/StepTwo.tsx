@@ -2,7 +2,13 @@ import React from 'react';
 
 import FormInput from 'components/UI/FormInput';
 
-const CustomerNewStepTwo = ({ data, errors, register }) => (
+interface Props {
+  data?: {};
+  errors?: {};
+  register: Function;
+}
+
+const CustomerNewStepTwo = ({ data, errors, register }): React.FC<Props> => (
   <div className="CustomerNewStepTwo card-body">
     <div className="row">
       <div className="col-sm-12">

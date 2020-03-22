@@ -1,4 +1,4 @@
-export enum Status {
+export enum StatusEnum {
   Potential = 'potential',
   Pending = 'pending',
   Active = 'active',

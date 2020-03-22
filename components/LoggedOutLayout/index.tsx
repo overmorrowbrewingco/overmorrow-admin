@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import Loading from 'components/Loading';
 import { useAuth0 } from 'hooks/useAuth0';
 
-const LoggedOutLayout = ({ children }) => {
+const LoggedOutLayout = ({ children }): React.FC => {
   const router = useRouter();
   const { loading, isAuthenticated } = useAuth0();
 

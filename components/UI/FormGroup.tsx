@@ -2,7 +2,23 @@ import React, { Children } from 'react';
 import cx from 'classnames';
 import { get } from 'lodash';
 
-const FormGroup = ({ children, data, errors, info, label, name, ...props }) => {
+interface Props {
+  data?: {};
+  errors?: {};
+  info?: string;
+  label?: string;
+  name: string;
+}
+
+const FormGroup: React.FC<Props> = ({
+  children,
+  data,
+  errors,
+  info,
+  label,
+  name,
+  ...props
+}) => {
   const child = Children.only(children);
 
   const error = get(errors, name);

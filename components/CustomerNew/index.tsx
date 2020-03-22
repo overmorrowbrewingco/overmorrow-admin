@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { gql } from 'apollo-boost';
 import { useRouter } from 'next/router';
 import { useMutation } from '@apollo/react-hooks';
 
@@ -12,21 +13,22 @@ import StepThree from './StepThree';
 import StepTwo from './StepTwo';
 import StepWrapper from './StepWrapper';
 
-const CustomersNew = () => {
+const CustomersNew = (): React.FC => {
   const router = useRouter();
 
   const [createCustomer, { data, error, loading }] = useMutation(
-    `mutation CREATE_BUSINESS($business: [business_insert_input!]!) {
-  insert_business(objects: $business) {
-    affected_rows
-  }
-}
-`,
+    gql`
+      mutation CREATE_BUSINESS($business: [business_insert_input!]!) {
+        insert_business(objects: $business) {
+          affected_rows
+        }
+      }
+    `,
   );
 
-  const onCancel = () => router.push('/customers');
+  const onCancel = (): void => router.push('/customers');
 
-  const onSubmit = (formData) =>
+  const onSubmit = (formData): void =>
     createCustomer({ variables: { business: formData } });
 
   const steps = [

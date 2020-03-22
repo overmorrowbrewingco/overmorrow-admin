@@ -5,7 +5,13 @@ import { get } from 'lodash';
 
 import { googlePlacesApiKey } from 'config/env';
 
-const AddressInput = ({ className, name, onSelect }) => {
+interface Props {
+  className?: string;
+  name: string;
+  onSelect: Function;
+}
+
+const AddressInput: React.FC<Props> = ({ className, name, onSelect }) => {
   const [autocomplete, setAutocomplete] = useState(null);
   const inputRef = useRef(null);
 
@@ -13,28 +19,32 @@ const AddressInput = ({ className, name, onSelect }) => {
     `https://maps.googleapis.com/maps/api/js?key=${googlePlacesApiKey}&libraries=places`,
   );
 
-  const findAddressComponentByType = (components = [], type) =>
+  const findAddressComponentByType = (components = [], type): string =>
     components.find((ac) => ac.types.find((t) => t === type));
 
   useEffect(() => {
     if (ready && status === ScriptStatus.READY && !autocomplete) {
-      setAutocomplete(
-        new window.google.maps.places.Autocomplete(inputRef.current, {
-          componentRestrictions: { country: 'VN' },
-          fields: [
-            'address_components',
-            'adr_address',
-            'formatted_address',
-            'geometry',
-          ],
-          type: ['address', 'establishment'],
-        }),
-      );
+      const google = window['google'];
+
+      if (google) {
+        setAutocomplete(
+          new google.maps.places.Autocomplete(inputRef.current, {
+            componentRestrictions: { country: 'VN' },
+            fields: [
+              'address_components',
+              'adr_address',
+              'formatted_address',
+              'geometry',
+            ],
+            type: ['address', 'establishment'],
+          }),
+        );
+      }
     }
   }, [autocomplete, ready, status]);
 
   useEffect(() => {
-    const handlePlaceChanged = () => {
+    const handlePlaceChanged = (): void => {
       const place = autocomplete.getPlace();
 
       const city = get(
@@ -71,7 +81,7 @@ const AddressInput = ({ className, name, onSelect }) => {
   return (
     <input
       className={cx(className, 'form-control')}
-      onKeyDown={(e) => {
+      onKeyDown={(e): void => {
         // FIXME: For some reason Google's API binds weird behavior to the
         // enter key here. This disables enter on the input, but could probably
         // be handled better somehow.

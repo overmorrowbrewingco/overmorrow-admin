@@ -8,9 +8,7 @@ const Sidebar: React.FC = ({ children }) => (
   >
     <Link href="/">
       <a className="brand-link" href="/">
-        <span className="brand-text font-weight-light">
-          Overmorrow
-        </span>
+        <span className="brand-text font-weight-light">Overmorrow</span>
       </a>
     </Link>
 

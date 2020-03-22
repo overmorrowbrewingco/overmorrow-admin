@@ -19,7 +19,7 @@ const App: React.FC<AppProps> = (props) => {
     ? `${window.location.origin}/callback`
     : null;
 
-  const onRedirectCallback: any = (appState: any) => {
+  const onRedirectCallback: void = (appState: {}) => {
     router.push(appState && appState.targetUrl ? appState.targetUrl : '/');
   };
 

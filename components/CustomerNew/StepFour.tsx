@@ -1,12 +1,17 @@
 import React from 'react';
 
-import Input from 'components/UI/AdminLTE/Input';
 import FormInput from 'components/UI/FormInput';
 import FormSelect from 'components/UI/FormSelect';
 
-const CustomerNewStepFour = ({ data, errors, register }) => (
+interface Props {
+  data?: {};
+  errors?: {};
+  register: Function;
+}
+
+const CustomerNewStepFour = ({ data, errors, register }): React.FC<Props> => (
   <div className="CustomerNewStepFour card-body">
-    <Input
+    <input
       name="contacts[data][0][primary]"
       ref={register()}
       type="hidden"

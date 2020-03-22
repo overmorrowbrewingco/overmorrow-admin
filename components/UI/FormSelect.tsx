@@ -4,11 +4,19 @@ import { get } from 'lodash';
 
 import FormGroup from './FormGroup';
 
+interface Props {
+  data?: {};
+  errors?: {};
+  info?: string;
+  label?: string;
+  name: string;
+}
+
 const FormSelect = React.forwardRef(
   (
     { className, data, errors, info, label, name, options = [], ...props },
     ref,
-  ) => (
+  ): React.FC<Props> => (
     <FormGroup
       data={data}
       errors={errors}
