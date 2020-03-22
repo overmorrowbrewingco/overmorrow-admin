@@ -1,10 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
 
-import Content from '~/components/UI/AdminLTE/Content';
-import CustomerNew from '~/components/CustomerNew';
+import PageContentWrapper from 'components/PageContentWrapper';
+import CustomerNew from 'components/CustomerNew';
 
-const CustomersNewBusinessPage = () => {
+const CustomersNewBusinessPage: React.FC = () => {
   const breadcrumbs = [
     {
       href: '/',
@@ -21,13 +21,13 @@ const CustomersNewBusinessPage = () => {
   ];
 
   return (
-    <Content breadcrumbs={breadcrumbs} title="New Business">
+    <PageContentWrapper breadcrumbs={breadcrumbs} title="New Business">
       <Head>
         <title>New Business</title>
       </Head>
 
       <CustomerNew />
-    </Content>
+    </PageContentWrapper>
   );
 };
 
