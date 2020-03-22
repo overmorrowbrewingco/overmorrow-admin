@@ -14,7 +14,7 @@ interface Props {
   setValue: Function;
 }
 
-const AddressFormFields: React.FC = ({
+const AddressFormFields: React.FC<Props> = ({
   data,
   errors,
   namespace = '',

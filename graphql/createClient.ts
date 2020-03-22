@@ -1,12 +1,12 @@
 import ApolloClient from 'apollo-client';
 import { ApolloLink } from 'apollo-link';
 import { HttpLink } from 'apollo-link-http';
-import { InMemoryCache } from 'apollo-cache-inmemory';
+import { InMemoryCache, NormalizedCache } from 'apollo-cache-inmemory';
 import { onError } from 'apollo-link-error';
 
 import { apiUri } from 'config/env';
 
-const createClient = (logout, token): ApolloClient => {
+const createClient = (logout, token): ApolloClient<any> => {
   const httpLink = new HttpLink({ uri: apiUri });
 
   const logoutLink = onError(({ graphQLErrors, networkError }) => {
