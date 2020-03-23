@@ -8,7 +8,7 @@ interface Props {
   register: Function;
 }
 
-const CustomerNewStepTwo = ({ data, errors, register }): React.FC<Props> => (
+const CustomerNewStepTwo: React.FC<Props> = ({ data, errors, register }) => (
   <div className="CustomerNewStepTwo card-body">
     <div className="row">
       <div className="col-sm-12">

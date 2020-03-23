@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CustomerNewStepWrapper = ({ children }): React.FC => (
+const CustomerNewStepWrapper: React.FC = ({ children }) => (
   <div className="card card-primary">{children}</div>
 );
 

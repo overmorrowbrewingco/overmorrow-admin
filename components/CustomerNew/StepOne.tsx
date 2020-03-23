@@ -10,7 +10,7 @@ interface Props {
   register: Function;
 }
 
-const CustomerNewStepOne = ({ data, errors, register }): React.FC<Props> => (
+const CustomerNewStepOne: React.FC<Props> = ({ data, errors, register }) => (
   <div className="CustomerNewStepOne card-body">
     {/* Hidden customer_type value, must be set to business */}
     <input

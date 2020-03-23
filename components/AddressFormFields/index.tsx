@@ -7,8 +7,8 @@ import FormInput from 'components/UI/FormInput';
 import FormTextArea from 'components/UI/FormTextArea';
 
 interface Props {
-  data?: {};
-  errors?: {};
+  data?: object;
+  errors?: object;
   namespace: string;
   register: Function;
   setValue: Function;

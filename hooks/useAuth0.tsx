@@ -49,11 +49,12 @@ export const Auth0Provider: React.FC<Props> = ({
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isInitializing, setIsInitializing] = useState(true);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<Auth0User>();
 
   useEffect(() => {
     const initAuth0 = async (): Promise<any> => {
+      setLoading(true);
       const auth0FromHook = await createAuth0Client(initOptions);
       setAuth0Client(auth0FromHook);
 

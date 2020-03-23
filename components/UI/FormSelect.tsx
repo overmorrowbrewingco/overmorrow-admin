@@ -1,22 +1,33 @@
-import React from 'react';
+import React, { HTMLProps } from 'react';
 import cx from 'classnames';
 import { get } from 'lodash';
 
 import FormGroup from './FormGroup';
 
+type Option = {
+  value: number | string | string[];
+  label: string;
+};
+
+// FIXME: This Props interface should be inheriting from the
+// HTMLSelectElement fields, but as I'm just picking TypeScript
+// back up I have been unable to get that working so far.
 interface Props {
-  data?: {};
-  errors?: {};
+  className?: string;
+  data?: object;
+  errors?: object;
   info?: string;
   label?: string;
   name: string;
+  options: Option[];
+  ref?: React.RefObject<HTMLSelectElement>;
 }
 
-const FormSelect = React.forwardRef(
+const FormSelect: React.FC<Props> = React.forwardRef(
   (
     { className, data, errors, info, label, name, options = [], ...props },
-    ref,
-  ): React.FC<Props> => (
+    ref?,
+  ) => (
     <FormGroup
       data={data}
       errors={errors}

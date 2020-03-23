@@ -3,6 +3,7 @@ import cx from 'classnames';
 import { get } from 'lodash';
 
 interface Props {
+  children: React.ReactElement | React.ReactElement[];
   data?: {};
   errors?: {};
   info?: string;
@@ -23,7 +24,7 @@ const FormGroup: React.FC<Props> = ({
 
   const error = get(errors, name);
 
-  let className = child.props.className || '';
+  let className = get(child, 'props.className', '');
 
   if (error) {
     className = `${className} is-invalid`.trim();

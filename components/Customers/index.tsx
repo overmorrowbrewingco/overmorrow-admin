@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import BusinessCustomers from './Business';
 
-const Customers = (): React.FC => (
+const Customers: React.FC = () => (
   <div className="Customers">
     <div className="row">
       <div className="col-sm-12">

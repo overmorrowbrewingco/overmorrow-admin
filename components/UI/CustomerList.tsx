@@ -33,7 +33,7 @@ const CustomerList: React.FC<Props> = ({
     return null;
   };
 
-  const toggleSort: void = (namespace) => {
+  const toggleSort = (namespace) => {
     const newOrderBy = {};
 
     if (get(orderBy, namespace) === 'desc') {

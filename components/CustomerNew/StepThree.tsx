@@ -11,12 +11,12 @@ interface Props {
   setValue: Function;
 }
 
-const CustomerNewStepThree = ({
+const CustomerNewStepThree: React.FC<Props> = ({
   data,
   errors,
   register,
   setValue,
-}): React.FC<Props> => (
+}) => (
   <div className="CustomerNewStepThree card-body">
     <div className="row">
       <div className="col-sm-12">

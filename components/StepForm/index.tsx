@@ -7,12 +7,20 @@ import Loading from 'components/Loading';
 
 import './StepForm.scss';
 
+interface StepProps {
+  data?: object;
+}
+
 export type Step = {
-  Component: JSX.Element | JSX.Element[];
+  Component: React.FC<StepProps>;
   title: string;
 };
 
 interface Props {
+  ButtonWrapper?: React.FC;
+  FooterWrapper?: React.FC;
+  HeaderWrapper?: React.FC;
+  StepWrapper?: React.FC;
   loading?: boolean;
   onCancel: Function;
   onSubmit: Function;
@@ -21,7 +29,7 @@ interface Props {
   steps: Step[];
 }
 
-const StepForm: React.FC = ({
+const StepForm: React.FC<Props> = ({
   loading,
   onCancel,
   onSubmit,
@@ -61,7 +69,7 @@ const StepForm: React.FC = ({
     }
   };
 
-  const NullWrapper = ({ children }): JSX.Element | JSX.Element[] => children;
+  const NullWrapper = ({ children }) => children;
 
   const ButtonWrapper = props.ButtonWrapper || NullWrapper;
   const HeaderWrapper = props.HeaderWrapper || NullWrapper;
@@ -97,7 +105,7 @@ const StepForm: React.FC = ({
             <HeaderWrapper>{steps[currentStep - 1].title}</HeaderWrapper>
           )}
 
-          <StepComponent data={data} {...formState} />
+          <StepComponent data={data} />
 
           <ButtonWrapper>
             {onCancel && (

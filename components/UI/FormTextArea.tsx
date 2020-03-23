@@ -4,19 +4,25 @@ import { get } from 'lodash';
 
 import FormGroup from './FormGroup';
 
+// FIXME: This Props interface should be inheriting from the
+// HTMLTextAreaElement fields, but as I'm just picking TypeScript
+// back up I have been unable to get that working so far.
 interface Props {
-  data?: {};
-  errors?: {};
+  autoComplete?: string;
+  className?: string;
+  data?: object;
+  disabled?: boolean;
+  errors?: object;
   info?: string;
   label?: string;
   name: string;
+  ref?: React.RefObject<HTMLTextAreaElement>;
+  rows?: number;
+  type?: string;
 }
 
-const FormTextArea = React.forwardRef(
-  (
-    { className, data, errors, info, label, name, ...props },
-    ref,
-  ): React.FC<Props> => (
+const FormTextArea: React.FC<Props> = React.forwardRef(
+  ({ className, data, errors, info, label, name, ...props }, ref?) => (
     <FormGroup
       data={data}
       errors={errors}
@@ -27,8 +33,8 @@ const FormTextArea = React.forwardRef(
       <textarea
         className={cx('form-control', className)}
         defaultValue={get(data, name)}
-        ref={ref}
         name={name}
+        ref={ref}
         {...props}
       />
     </FormGroup>

@@ -9,13 +9,13 @@ interface Props {
   register: Function;
 }
 
-const CustomerNewStepFour = ({ data, errors, register }): React.FC<Props> => (
+const CustomerNewStepFour: React.FC<Props> = ({ data, errors, register }) => (
   <div className="CustomerNewStepFour card-body">
     <input
       name="contacts[data][0][primary]"
       ref={register()}
       type="hidden"
-      value={true}
+      value="true"
     />
 
     <div className="row">

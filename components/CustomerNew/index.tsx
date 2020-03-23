@@ -13,7 +13,7 @@ import StepThree from './StepThree';
 import StepTwo from './StepTwo';
 import StepWrapper from './StepWrapper';
 
-const CustomersNew = (): React.FC => {
+const CustomersNew: React.FC = () => {
   const router = useRouter();
 
   const [createCustomer, { data, error, loading }] = useMutation(
@@ -26,9 +26,9 @@ const CustomersNew = (): React.FC => {
     `,
   );
 
-  const onCancel = (): void => router.push('/customers');
+  const onCancel = () => router.push('/customers');
 
-  const onSubmit = (formData): void =>
+  const onSubmit = (formData) =>
     createCustomer({ variables: { business: formData } });
 
   const steps = [

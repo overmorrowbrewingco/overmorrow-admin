@@ -4,19 +4,24 @@ import { get } from 'lodash';
 
 import FormGroup from './FormGroup';
 
+// FIXME: This Props interface should be inheriting from the
+// HTMLInputElement fields, but as I'm just picking TypeScript
+// back up I have been unable to get that working so far.
 interface Props {
-  data?: {};
-  errors?: {};
+  autoComplete?: string;
+  className?: string;
+  data?: object;
+  disabled?: boolean;
+  errors?: object;
   info?: string;
   label?: string;
   name: string;
+  ref?: React.RefObject<HTMLInputElement>;
+  type?: string;
 }
 
-const FormInput = React.forwardRef(
-  (
-    { className, data, errors, info, label, name, ...props },
-    ref,
-  ): React.FC<Props> => (
+const FormInput: React.FC<Props> = React.forwardRef(
+  ({ className, data, errors, info, label, name, ...props }, ref?) => (
     <FormGroup
       data={data}
       errors={errors}
