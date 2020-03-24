@@ -26,10 +26,13 @@ const CustomersNew: React.FC = () => {
     `,
   );
 
-  const onCancel = () => router.push('/customers');
+  const onCancel = (): void => {
+    router.push('/customers');
+  };
 
-  const onSubmit = (formData) =>
+  const onSubmit = (formData): void => {
     createCustomer({ variables: { business: formData } });
+  };
 
   const steps = [
     {

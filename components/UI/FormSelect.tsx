@@ -1,4 +1,4 @@
-import React, { HTMLProps } from 'react';
+import React from 'react';
 import cx from 'classnames';
 import { get } from 'lodash';
 
@@ -9,9 +9,6 @@ type Option = {
   label: string;
 };
 
-// FIXME: This Props interface should be inheriting from the
-// HTMLSelectElement fields, but as I'm just picking TypeScript
-// back up I have been unable to get that working so far.
 interface Props {
   className?: string;
   data?: object;
@@ -20,10 +17,11 @@ interface Props {
   label?: string;
   name: string;
   options: Option[];
-  ref?: React.RefObject<HTMLSelectElement>;
 }
 
-const FormSelect: React.FC<Props> = React.forwardRef(
+type FormSelectProps = React.ComponentPropsWithoutRef<'select'> & Props;
+
+const FormSelect = React.forwardRef<HTMLSelectElement, FormSelectProps>(
   (
     { className, data, errors, info, label, name, options = [], ...props },
     ref?,

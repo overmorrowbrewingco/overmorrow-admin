@@ -82,7 +82,6 @@ const AddressFormFields: React.FC<Props> = ({
             name={`${namespace}[html]`}
             ref={register({ required: true })}
             rows={3}
-            type="text"
           />
         </div>
       </div>
