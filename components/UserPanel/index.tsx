@@ -9,6 +9,8 @@ import { useAuth0 } from 'hooks/useAuth0';
 const UserPanel: React.FC = () => {
   const { user } = useAuth0();
 
+  const auth0Id = get(user, 'sub', undefined);
+
   const { data, error, loading } = useQuery(
     gql`
       query USER_PANEL_QUERY($auth0Id: String!) {
@@ -19,8 +21,9 @@ const UserPanel: React.FC = () => {
       }
     `,
     {
+      skip: !auth0Id,
       variables: {
-        auth0Id: user.sub,
+        auth0Id,
       },
     },
   );
@@ -33,6 +36,8 @@ const UserPanel: React.FC = () => {
     console.error(error);
     return null;
   }
+
+  if (!hasuraUser) return null;
 
   return (
     <div className="user-panel mt-3 pb-3 mb-3 d-flex">

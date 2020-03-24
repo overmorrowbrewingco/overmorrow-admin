@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NO_AUTH=true next dev",
     "build": "next build",
     "heroku-postbuild": "npm run build",
     "lint": "eslint --ext .ts --ext .tsx ./",

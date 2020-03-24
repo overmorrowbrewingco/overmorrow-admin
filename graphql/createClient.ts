@@ -1,13 +1,14 @@
 import ApolloClient from 'apollo-client';
+import fetch from 'isomorphic-unfetch';
 import { ApolloLink } from 'apollo-link';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { onError } from 'apollo-link-error';
 
-import { apiUri } from 'config/env';
+import { apiSecret, apiUri } from 'config/env';
 
-const createClient = (logout, token) => {
-  const httpLink = new HttpLink({ uri: apiUri });
+const createClient = (logout, token, isDevelopment = false) => {
+  const httpLink = new HttpLink({ fetch, uri: apiUri });
 
   const logoutLink = onError(({ graphQLErrors, networkError }) => {
     const authFailureCodes = [
@@ -40,7 +41,13 @@ const createClient = (logout, token) => {
   });
 
   const authMiddleware = new ApolloLink((operation, forward) => {
-    if (token) {
+    if (isDevelopment) {
+      operation.setContext({
+        headers: {
+          'X-Hasura-Admin-Secret': apiSecret,
+        },
+      });
+    } else if (token) {
       operation.setContext({
         headers: {
           Authorization: `Bearer ${token}`,

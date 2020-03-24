@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import LoggedInLayout from 'components/LoggedInLayout';
 import LoggedOutLayout from 'components/LoggedOutLayout';
 import { Auth0Provider } from 'hooks/useAuth0';
-import { auth0ClientId, auth0Domain } from 'config/env';
+import { apiSecret, auth0ClientId, auth0Domain } from 'config/env';
 
 import '../styles/styles.scss';
 
@@ -23,6 +23,8 @@ const App: React.FC<AppProps> = (props) => {
     router.push(appState && appState.targetUrl ? appState.targetUrl : '/');
   };
 
+  const isDevelopment = !!process.env.NO_AUTH && !!apiSecret;
+
   const isProtectedRoute = !unprotectedRoutes.includes(props.router.route);
 
   return (
@@ -33,7 +35,7 @@ const App: React.FC<AppProps> = (props) => {
       onRedirectCallback={onRedirectCallback}
     >
       {isProtectedRoute ? (
-        <LoggedInLayout>
+        <LoggedInLayout isDevelopment={isDevelopment}>
           <Component {...props} />
         </LoggedInLayout>
       ) : (
