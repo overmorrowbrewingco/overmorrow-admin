@@ -23,14 +23,14 @@ const PageContentWrapper: React.FC<Props> = ({
             <h1 className="m-0 text-dark">{title}</h1>
           </Col>
 
-          <Col>
+          <Col className="d-flex justify-content-end">
             <Breadcrumb>
               {breadcrumbs.map((bc, index) => (
-                <Breadcrumb.Item>
-                  <Link as={bc.as} href={bc.href}>
-                    <a href={bc.href}>{bc.title}</a>
-                  </Link>
-                </Breadcrumb.Item>
+                <Link as={bc.as} href={bc.href} key={index}>
+                  <Breadcrumb.Item href={bc.as || bc.href}>
+                    {bc.title}
+                  </Breadcrumb.Item>
+                </Link>
               ))}
             </Breadcrumb>
           </Col>
