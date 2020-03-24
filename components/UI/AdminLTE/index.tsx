@@ -1,5 +1,6 @@
 import Card from './Card';
 import CardBody from './CardBody';
+import CardFooter from './CardFooter';
 import CardHeader from './CardHeader';
 import CardTitle from './CardTitle';
 import Content from './Content';
@@ -13,6 +14,7 @@ import SidebarMenuNavLink from './SidebarMenuNavLink';
 export {
   Card,
   CardBody,
+  CardFooter,
   CardHeader,
   CardTitle,
   Content,

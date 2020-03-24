@@ -29,6 +29,7 @@ const Customer: React.FC<Props> = ({ id }) => {
             account_status
             email
             facebook_username
+            id
             instagram_username
             phone_number
             website
@@ -261,9 +262,11 @@ const Customer: React.FC<Props> = ({ id }) => {
             <CardBody>
               <table className="table table-striped">
                 <thead>
-                  <th>#</th>
-                  <th>Name</th>
-                  <th>City</th>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>City</th>
+                  </tr>
                 </thead>
 
                 <tbody>

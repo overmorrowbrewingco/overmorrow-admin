@@ -7,12 +7,14 @@ import { BreadcrumbType } from 'types/Breadcrumb';
 
 interface Props {
   breadcrumbs?: BreadcrumbType[];
+  subtitle?: string;
   title: string;
 }
 
 const PageContentWrapper: React.FC<Props> = ({
   breadcrumbs = [],
   children,
+  subtitle,
   title,
 }) => (
   <ContentWrapper>
@@ -20,7 +22,13 @@ const PageContentWrapper: React.FC<Props> = ({
       <Container fluid>
         <Row>
           <Col>
-            <h1 className="m-0 text-dark">{title}</h1>
+            <h1 className="m-0 text-dark">
+              {title}
+
+              {subtitle && (
+                <small className="ml-3 text-muted">{subtitle}</small>
+              )}
+            </h1>
           </Col>
 
           <Col className="d-flex justify-content-end">

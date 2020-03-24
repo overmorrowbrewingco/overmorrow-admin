@@ -41,6 +41,7 @@
         "allow": ["warn", "error"]
       }
     ],
+    "@typescript-eslint/camelcase": 0,
     "jsx-a11y/anchor-is-valid": "off",
     "jsx-a11y/no-autofocus": "off",
     "jsx-a11y/no-onchange": "off",
