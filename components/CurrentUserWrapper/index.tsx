@@ -24,7 +24,7 @@ const CurrentUserWrapper: React.FC = ({ children }) => {
       }
     `,
     {
-      pollInterval: 30000,
+      pollInterval: auth0Id ? 30000 : null,
       skip: !auth0Id,
       variables: {
         auth0Id,

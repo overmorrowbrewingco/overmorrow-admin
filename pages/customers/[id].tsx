@@ -8,6 +8,8 @@ import PageContentWrapper from 'components/PageContentWrapper';
 import Customer from 'components/Customer';
 
 const CustomerPage: React.FC = (props) => {
+  const id = get(props, 'router.query.id');
+
   const { data, error, loading } = useQuery(
     gql`
       query CUSTOMER_PAGE_QUERY($id: uuid!) {
@@ -18,8 +20,9 @@ const CustomerPage: React.FC = (props) => {
       }
     `,
     {
+      skip: !id,
       variables: {
-        id: get(props, 'router.query.id'),
+        id,
       },
     },
   );
@@ -49,7 +52,7 @@ const CustomerPage: React.FC = (props) => {
   ];
 
   return (
-    <PageContentWrapper breadcrumbs={breadcrumbs} title="Customer">
+    <PageContentWrapper breadcrumbs={breadcrumbs} title={customer.name}>
       <Head>
         <title>{customer.name}</title>
       </Head>

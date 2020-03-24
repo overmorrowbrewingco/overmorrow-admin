@@ -27,7 +27,10 @@ const PageContentWrapper: React.FC<Props> = ({
             <Breadcrumb>
               {breadcrumbs.map((bc, index) => (
                 <Link as={bc.as} href={bc.href} key={index}>
-                  <Breadcrumb.Item href={bc.as || bc.href}>
+                  <Breadcrumb.Item
+                    active={index + 1 === breadcrumbs.length}
+                    href={bc.as || bc.href}
+                  >
                     {bc.title}
                   </Breadcrumb.Item>
                 </Link>
