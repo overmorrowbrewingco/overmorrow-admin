@@ -6,8 +6,15 @@ import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 
 import AccountStatusBadge from 'components/UI/AccountStatusBadge';
+import ContactList from 'components/ContactList';
 import Loading from 'components/Loading';
-import { Card, CardBody, CardHeader, CardTitle } from 'components/UI/AdminLTE';
+import {
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from 'components/UI/AdminLTE';
 
 interface Props {
   id: string;
@@ -280,47 +287,46 @@ const Customer: React.FC<Props> = ({ id }) => {
                 </tbody>
               </table>
             </CardBody>
+
+            <CardFooter className="text-right">
+              <Link
+                as={`/customers/${customer.id}/locations/new`}
+                href="/customers/[id]/locations/new"
+              >
+                <a className="btn btn-secondary">Create New</a>
+              </Link>
+              <Link
+                as={`/customers/${customer.id}/locations`}
+                href="/customers/[id]/locations"
+              >
+                <a className="btn btn-primary ml-2">See All</a>
+              </Link>
+            </CardFooter>
           </Card>
 
           <Card>
-            <CardHeader className="align-items-center d-flex justify-content-between">
+            <CardHeader>
               <CardTitle className="flex-grow-1">Contacts</CardTitle>
+            </CardHeader>
 
+            <CardBody>
+              <ContactList businessId={customer.business.id} limit={3} />
+            </CardBody>
+
+            <CardFooter className="text-right">
+              <Link
+                as={`/customers/${customer.id}/contacts/new`}
+                href="/customers/[id]/contacts/new"
+              >
+                <a className="btn btn-secondary">Create New</a>
+              </Link>
               <Link
                 as={`/customers/${customer.id}/contacts`}
                 href="/customers/[id]/contacts"
               >
-                <a className="btn btn-primary btn-xs">See All</a>
+                <a className="btn btn-primary ml-2">See All</a>
               </Link>
-            </CardHeader>
-
-            <CardBody>
-              <table className="table table-striped">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Full Name</th>
-                    <th>Title</th>
-                    <th />
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {customer.business.contacts.map((contact, i) => (
-                    <tr key={contact.id}>
-                      <td>{i + 1}</td>
-                      <td>{contact.full_name}</td>
-                      <td>{contact.title}</td>
-                      <td>
-                        {contact.primary && (
-                          <span className="badge bg-success">Primary</span>
-                        )}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </CardBody>
+            </CardFooter>
           </Card>
         </Col>
       </Row>
