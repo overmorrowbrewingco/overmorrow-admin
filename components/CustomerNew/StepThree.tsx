@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import AddressFormFields from 'components/AddressFormFields';
+import AddressForm from 'components/FormFragments/AddressForm';
 import FormInput from 'components/UI/FormInput';
 import FormTextArea from 'components/UI/FormTextArea';
 
@@ -54,12 +54,9 @@ const CustomerNewStepThree: React.FC<Props> = ({ data }) => {
 
       <div className="row">
         <div className="col-sm-12">
-          <AddressFormFields
+          <AddressForm
             data={data}
-            errors={errors}
             namespace="[locations][data][0][address][data]"
-            register={register}
-            setValue={setValue}
           />
         </div>
       </div>

@@ -3,6 +3,10 @@ import { gql } from 'apollo-boost';
 import { useRouter } from 'next/router';
 import { useMutation } from '@apollo/react-hooks';
 
+import BusinessForm from 'components/FormFragments/BusinessForm';
+import BusinessLocationForm from 'components/FormFragments/BusinessLocationForm';
+import ContactForm from 'components/FormFragments/ContactForm';
+import CustomerForm from 'components/FormFragments/CustomerForm';
 import StepForm from 'components/StepForm';
 
 import ButtonWrapper from './ButtonWrapper';
@@ -12,6 +16,7 @@ import StepOne from './StepOne';
 import StepThree from './StepThree';
 import StepTwo from './StepTwo';
 import StepWrapper from './StepWrapper';
+import Wrapper from './Wrapper';
 
 const CustomersNew: React.FC = () => {
   const router = useRouter();
@@ -36,28 +41,35 @@ const CustomersNew: React.FC = () => {
 
   const steps = [
     {
-      Component: StepOne,
+      Component: ({ data }): JSX.Element => (
+        <CustomerForm data={data} namespace="customer[data]" />
+      ),
       title: 'Basic Information',
     },
     {
-      Component: StepTwo,
-      title: 'Business Contact Information',
+      Component: ({ data }): JSX.Element => <BusinessForm data={data} />,
+      title: 'Business Information',
     },
     {
-      Component: StepThree,
+      Component: ({ data }): JSX.Element => (
+        <BusinessLocationForm data={data} namespace="[locations][data][0]" />
+      ),
       title: 'Primary Location',
     },
     {
-      Component: StepFour,
+      Component: ({ data }): JSX.Element => (
+        <ContactForm data={data} namespace="contacts[data][0]" />
+      ),
       title: 'Primary Contact',
     },
   ];
 
   // When we get back data from the mutation, push to the list page
   useEffect(() => {
-    if (data) {
-      router.push('/customers');
-    }
+    console.log(data, error);
+    // if (data) {
+    //   router.push('/customers');
+    // }
   }, [data, router]);
 
   return (
@@ -75,6 +87,7 @@ const CustomersNew: React.FC = () => {
           showHeader
           steps={steps}
           StepWrapper={StepWrapper}
+          Wrapper={Wrapper}
         />
       </div>
     </div>

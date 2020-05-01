@@ -6,17 +6,16 @@ import { useFormContext } from 'react-hook-form';
 import addNamespace from 'helpers/addNamespace';
 import { Business } from 'types';
 
-import FormInput from './FormInput';
-import FormSelect from './FormSelect';
+import FormInput from 'components/UI/FormInput';
+import FormSelect from 'components/UI/FormSelect';
 
 interface Props {
   business?: Business;
+  data?: object;
   namespace?: string;
-  onSubmit?: Function;
-  register?: Function;
 }
 
-const NewContactForm: React.FC<Props> = ({ business, namespace }) => {
+const ContactForm: React.FC<Props> = ({ business, data, namespace }) => {
   const { errors, register } = useFormContext();
 
   return (
@@ -24,9 +23,10 @@ const NewContactForm: React.FC<Props> = ({ business, namespace }) => {
       <Row>
         <Col>
           <FormInput
+            data={data}
             errors={errors}
             label="Primary"
-            name={addNamespace('primary')}
+            name={addNamespace('primary', namespace)}
             ref={register()}
             type="checkbox"
           />
@@ -34,9 +34,10 @@ const NewContactForm: React.FC<Props> = ({ business, namespace }) => {
 
         <Col>
           <FormInput
+            data={data}
             errors={errors}
             label="Active"
-            name={addNamespace('active')}
+            name={addNamespace('active', namespace)}
             ref={register()}
             type="checkbox"
           />
@@ -45,9 +46,10 @@ const NewContactForm: React.FC<Props> = ({ business, namespace }) => {
         {get(business, 'locations', []).length > 0 && (
           <Col>
             <FormSelect
+              data={data}
               errors={errors}
               label="Affiliated Location"
-              name={addNamespace('business_location_id')}
+              name={addNamespace('business_location_id', namespace)}
               options={get(business, 'locations', []).map((location) => ({
                 label: location.name,
                 value: location.id,
@@ -62,9 +64,10 @@ const NewContactForm: React.FC<Props> = ({ business, namespace }) => {
         <Col>
           <FormInput
             autoComplete="name"
+            data={data}
             errors={errors}
             label="Full Name"
-            name={addNamespace('full_name')}
+            name={addNamespace('full_name', namespace)}
             ref={register({
               required: 'Required',
             })}
@@ -75,9 +78,10 @@ const NewContactForm: React.FC<Props> = ({ business, namespace }) => {
         <Col>
           <FormInput
             autoComplete="nickname"
+            data={data}
             errors={errors}
             label="Preferred Name"
-            name={addNamespace('preferred_name')}
+            name={addNamespace('preferred_name', namespace)}
             ref={register()}
             type="text"
           />
@@ -87,9 +91,10 @@ const NewContactForm: React.FC<Props> = ({ business, namespace }) => {
       <Row>
         <Col>
           <FormInput
+            data={data}
             errors={errors}
             label="Title"
-            name={addNamespace('title')}
+            name={addNamespace('title', namespace)}
             ref={register({
               required: 'Required',
             })}
@@ -99,9 +104,10 @@ const NewContactForm: React.FC<Props> = ({ business, namespace }) => {
 
         <Col>
           <FormInput
+            data={data}
             errors={errors}
             label="Gender"
-            name={addNamespace('gender')}
+            name={addNamespace('gender', namespace)}
             ref={register()}
             type="text"
           />
@@ -111,9 +117,10 @@ const NewContactForm: React.FC<Props> = ({ business, namespace }) => {
       <Row>
         <Col>
           <FormSelect
+            data={data}
             errors={errors}
             label="Preferred Language"
-            name={addNamespace('preferred_language')}
+            name={addNamespace('preferred_language', namespace)}
             options={[
               { label: 'English', value: 'english' },
               { label: 'Vietnamese', value: 'vietnamese' },
@@ -124,9 +131,10 @@ const NewContactForm: React.FC<Props> = ({ business, namespace }) => {
 
         <Col>
           <FormInput
+            data={data}
             errors={errors}
             label="Preferred Communication Method"
-            name={addNamespace('preferred_communication_method')}
+            name={addNamespace('preferred_communication_method', namespace)}
             ref={register()}
             type="text"
           />
@@ -136,9 +144,10 @@ const NewContactForm: React.FC<Props> = ({ business, namespace }) => {
       <Row>
         <div className="col-sm-6">
           <FormInput
+            data={data}
             errors={errors}
             label="Email"
-            name={addNamespace('email')}
+            name={addNamespace('email', namespace)}
             ref={register()}
             type="email"
           />
@@ -147,9 +156,10 @@ const NewContactForm: React.FC<Props> = ({ business, namespace }) => {
         <div className="col-sm-6">
           <FormInput
             autoComplete="email"
+            data={data}
             errors={errors}
             label="Phone Number"
-            name={addNamespace('phone_number')}
+            name={addNamespace('phone_number', namespace)}
             ref={register()}
             type="tel"
           />
@@ -159,9 +169,10 @@ const NewContactForm: React.FC<Props> = ({ business, namespace }) => {
       <Row>
         <div className="col-sm-6">
           <FormInput
+            data={data}
             errors={errors}
             label="Facebook Username"
-            name={addNamespace('facebook_username')}
+            name={addNamespace('facebook_username', namespace)}
             ref={register()}
             type="text"
           />
@@ -169,9 +180,10 @@ const NewContactForm: React.FC<Props> = ({ business, namespace }) => {
 
         <div className="col-sm-6">
           <FormInput
+            data={data}
             errors={errors}
             label="Instagram Username"
-            name={addNamespace('instagram_username')}
+            name={addNamespace('instagram_username', namespace)}
             ref={register()}
             type="text"
           />
@@ -181,4 +193,4 @@ const NewContactForm: React.FC<Props> = ({ business, namespace }) => {
   );
 };
 
-export default NewContactForm;
+export default ContactForm;

@@ -4,7 +4,7 @@ import { get } from 'lodash';
 import { gql } from 'apollo-boost';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 
-import NewContactForm from 'components/UI/NewContactForm';
+import ContactForm from 'components/FormFragments/ContactForm';
 import {
   Card,
   CardBody,
@@ -88,7 +88,7 @@ const CustomerNewContact: React.FC<Props> = ({ id }) => {
           </CardHeader>
 
           <CardBody>
-            <NewContactForm business={customer.business} />
+            <ContactForm business={customer.business} />
           </CardBody>
 
           <CardFooter className="text-right">
