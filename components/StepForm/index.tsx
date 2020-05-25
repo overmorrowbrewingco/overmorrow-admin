@@ -70,15 +70,15 @@ const StepForm: React.FC<Props> = ({
     }
   };
 
-  const NullWrapper: React.FC = ({ children }) => <Fragment>{children}</Fragment>;
+  const NullWrapper: React.FC = ({ children }) => (
+    <Fragment>{children}</Fragment>
+  );
 
   const ButtonWrapper = props.ButtonWrapper || NullWrapper;
   const HeaderWrapper = props.HeaderWrapper || NullWrapper;
   const StepWrapper = props.StepWrapper || NullWrapper;
   const Wrapper = props.Wrapper || NullWrapper;
   const StepComponent = steps[currentStep - 1].Component;
-
-  console.log(data);
 
   return (
     <FormContext {...formState}>

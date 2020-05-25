@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { gql } from 'apollo-boost';
 import { useRouter } from 'next/router';
 import { useMutation } from '@apollo/react-hooks';
@@ -11,10 +11,6 @@ import StepForm from 'components/StepForm';
 
 import ButtonWrapper from './ButtonWrapper';
 import HeaderWrapper from './HeaderWrapper';
-import StepFour from './StepFour';
-import StepOne from './StepOne';
-import StepThree from './StepThree';
-import StepTwo from './StepTwo';
 import StepWrapper from './StepWrapper';
 import Wrapper from './Wrapper';
 
@@ -65,12 +61,12 @@ const CustomersNew: React.FC = () => {
   ];
 
   // When we get back data from the mutation, push to the list page
-  useEffect(() => {
-    console.log(data, error);
-    // if (data) {
-    //   router.push('/customers');
-    // }
-  }, [data, router]);
+  // useEffect(() => {
+  // console.log(data, error);
+  // if (data) {
+  //   router.push('/customers');
+  // }
+  // }, [data, router]);
 
   return (
     <div className="row justify-content-center mt-5">
