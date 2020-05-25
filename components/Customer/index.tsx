@@ -288,20 +288,22 @@ const Customer: React.FC<Props> = ({ id }) => {
               </table>
             </CardBody>
 
-            <CardFooter className="text-right">
-              <Link
-                as={`/customers/${customer.id}/locations/new`}
-                href="/customers/[id]/locations/new"
-              >
-                <a className="btn btn-secondary">Create New</a>
-              </Link>
-              <Link
-                as={`/customers/${customer.id}/locations`}
-                href="/customers/[id]/locations"
-              >
-                <a className="btn btn-primary ml-2">See All</a>
-              </Link>
-            </CardFooter>
+            {/*
+              <CardFooter className="text-right">
+                <Link
+                  as={`/customers/${customer.id}/locations/new`}
+                  href="/customers/[id]/locations/new"
+                >
+                  <a className="btn btn-secondary">Create New</a>
+                </Link>
+                <Link
+                  as={`/customers/${customer.id}/locations`}
+                  href="/customers/[id]/locations"
+                >
+                  <a className="btn btn-primary ml-2">See All</a>
+                </Link>
+              </CardFooter>
+            */}
           </Card>
 
           <Card>
@@ -313,20 +315,22 @@ const Customer: React.FC<Props> = ({ id }) => {
               <ContactList businessId={customer.business.id} limit={3} />
             </CardBody>
 
-            <CardFooter className="text-right">
-              <Link
-                as={`/customers/${customer.id}/contacts/new`}
-                href="/customers/[id]/contacts/new"
-              >
-                <a className="btn btn-secondary">Create New</a>
-              </Link>
-              <Link
-                as={`/customers/${customer.id}/contacts`}
-                href="/customers/[id]/contacts"
-              >
-                <a className="btn btn-primary ml-2">See All</a>
-              </Link>
-            </CardFooter>
+            {/*
+              <CardFooter className="text-right">
+                <Link
+                  as={`/customers/${customer.id}/contacts/new`}
+                  href="/customers/[id]/contacts/new"
+                >
+                  <a className="btn btn-secondary">Create New</a>
+                </Link>
+                <Link
+                  as={`/customers/${customer.id}/contacts`}
+                  href="/customers/[id]/contacts"
+                >
+                  <a className="btn btn-primary ml-2">See All</a>
+                </Link>
+              </CardFooter>
+            */}
           </Card>
         </Col>
       </Row>
