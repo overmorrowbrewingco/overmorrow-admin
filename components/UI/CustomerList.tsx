@@ -91,16 +91,12 @@ const CustomerList: React.FC<Props> = ({
               />
             </td>
             <td>
-              <Link href="/customers">
-                <a className="btn btn-primary btn-sm mr-2" href="/customers">
-                  View
-                </a>
+              <Link as={`/customers/${customer.id}`} href="/customers/[id]">
+                <a className="btn btn-primary btn-sm mr-2">View</a>
               </Link>
 
-              <Link href="/customers">
-                <a className="btn btn-secondary btn-sm" href="/customers">
-                  Edit
-                </a>
+              <Link as={`/customers/${customer.id}`} href="/customers/[id]">
+                <a className="btn btn-secondary btn-sm">Edit</a>
               </Link>
             </td>
           </tr>

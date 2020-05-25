@@ -8,7 +8,10 @@ import { onError } from 'apollo-link-error';
 import { apiSecret, apiUri } from 'config/env';
 
 const createClient = (logout, token, isDevelopment = false) => {
-  const httpLink = new HttpLink({ fetch, uri: apiUri });
+  const httpLink = new HttpLink({
+    fetch,
+    uri: apiUri,
+  });
 
   const logoutLink = onError(({ graphQLErrors, networkError }) => {
     const authFailureCodes = [

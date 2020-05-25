@@ -1,10 +1,10 @@
 import React from 'react';
 
 import capitalize from 'helpers/capitalize';
-import { StatusEnum } from 'types/StatusEnum';
+import { AccountStatusEnum } from 'types/AccountStatusEnum';
 
 interface Props {
-  status: StatusEnum;
+  status: AccountStatusEnum;
 }
 
 const AccountStatusBadge: React.FC<Props> = ({ status }) => {

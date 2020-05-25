@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { Col, Row } from 'react-bootstrap';
+import { FieldValues, useFormContext } from 'react-hook-form';
 import { get } from 'lodash';
 
+import addNamespace from 'helpers/addNamespace';
 import AddressInput from 'components/AddressInput';
 import FormGroup from 'components/UI/FormGroup';
 import FormInput from 'components/UI/FormInput';
@@ -8,41 +11,34 @@ import FormTextArea from 'components/UI/FormTextArea';
 
 interface Props {
   data?: object;
-  errors?: object;
   namespace: string;
-  register: Function;
-  setValue: Function;
 }
 
-const AddressFormFields: React.FC<Props> = ({
-  data,
-  errors,
-  namespace = '',
-  register,
-  setValue,
-}) => {
+const AddressForm: React.FC<Props> = ({ data = {}, namespace }) => {
+  const { errors, register, setValue } = useFormContext();
+
   const onAddressSelect = (d): void => {
-    const createValueMap = (fields = []): object =>
+    const createValueMap = (fields = []): FieldValues[] =>
       fields.map((field) => ({
-        [`${namespace}[${field}]`]: get(d, field) || null,
+        [namespace ? `${namespace}[${field}]` : field]: get(d, field) || null,
       }));
 
-    setValue(
-      createValueMap([
-        'city',
-        'district',
-        'formatted',
-        'html',
-        'latitude',
-        'longitude',
-      ]),
-    );
+    const values = createValueMap([
+      'city',
+      'district',
+      'formatted',
+      'html',
+      'latitude',
+      'longitude',
+    ]);
+
+    setValue(values);
   };
 
   return (
-    <div>
-      <div className="row">
-        <div className="col-sm-12">
+    <Fragment>
+      <Row>
+        <Col>
           <FormGroup
             data={data}
             errors={errors}
@@ -55,96 +51,96 @@ const AddressFormFields: React.FC<Props> = ({
               onSelect={onAddressSelect}
             />
           </FormGroup>
-        </div>
-      </div>
+        </Col>
+      </Row>
 
-      <div className="row">
-        <div className="col-sm-12">
+      <Row>
+        <Col>
           <FormInput
             data={data}
             disabled
             errors={errors}
             label="Full Address"
-            name={`${namespace}[formatted]`}
+            name={addNamespace('formatted', namespace)}
             ref={register({ required: true })}
             type="text"
           />
-        </div>
-      </div>
+        </Col>
+      </Row>
 
-      <div className="row">
-        <div className="col-sm-12">
+      <Row>
+        <Col>
           <FormTextArea
             data={data}
             disabled
             errors={errors}
             label="Address (HTML)"
-            name={`${namespace}[html]`}
+            name={addNamespace('html', namespace)}
             ref={register({ required: true })}
             rows={3}
           />
-        </div>
-      </div>
+        </Col>
+      </Row>
 
-      <div className="row">
-        <div className="col-sm-6">
+      <Row>
+        <Col>
           <FormInput
             data={data}
             disabled
             errors={errors}
             label="District"
-            name={`${namespace}[district]`}
+            name={addNamespace('district', namespace)}
             ref={register()}
             type="text"
           />
-        </div>
+        </Col>
 
-        <div className="col-sm-6">
+        <Col>
           <FormInput
             data={data}
             disabled
             errors={errors}
             label="City"
-            name={`${namespace}[city]`}
+            name={addNamespace('city', namespace)}
             ref={register({
               required: 'Required',
             })}
             type="text"
           />
-        </div>
-      </div>
+        </Col>
+      </Row>
 
-      <div className="row">
-        <div className="col-sm-6">
+      <Row>
+        <Col>
           <FormInput
             data={data}
             disabled
             errors={errors}
             label="Latitude"
-            name={`${namespace}[latitude]`}
+            name={addNamespace('latitude', namespace)}
             ref={register({
               required: 'Required',
             })}
             type="text"
           />
-        </div>
+        </Col>
 
-        <div className="col-sm-6">
+        <Col>
           <FormInput
             data={data}
             disabled
             errors={errors}
             label="Longitude"
-            name={`${namespace}[longitude]`}
+            name={addNamespace('longitude', namespace)}
             ref={register({
               required: 'Required',
             })}
             type="text"
           />
-        </div>
-      </div>
-    </div>
+        </Col>
+      </Row>
+    </Fragment>
   );
 };
 
-export default AddressFormFields;
+export default AddressForm;

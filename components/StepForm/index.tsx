@@ -21,6 +21,7 @@ interface Props {
   FooterWrapper?: React.FC;
   HeaderWrapper?: React.FC;
   StepWrapper?: React.FC;
+  Wrapper?: React.FC;
   loading?: boolean;
   onCancel: Function;
   onSubmit: Function;
@@ -69,11 +70,14 @@ const StepForm: React.FC<Props> = ({
     }
   };
 
-  const NullWrapper: React.FC = ({ children }) => <Fragment>children</Fragment>;
+  const NullWrapper: React.FC = ({ children }) => (
+    <Fragment>{children}</Fragment>
+  );
 
   const ButtonWrapper = props.ButtonWrapper || NullWrapper;
   const HeaderWrapper = props.HeaderWrapper || NullWrapper;
   const StepWrapper = props.StepWrapper || NullWrapper;
+  const Wrapper = props.Wrapper || NullWrapper;
   const StepComponent = steps[currentStep - 1].Component;
 
   return (
@@ -96,7 +100,7 @@ const StepForm: React.FC<Props> = ({
           </nav>
         )}
 
-        <StepWrapper>
+        <Wrapper>
           {loading && (
             <Loading className="StepForm__loading" fullScreen={false} />
           )}
@@ -106,7 +110,9 @@ const StepForm: React.FC<Props> = ({
               <HeaderWrapper>{steps[currentStep - 1].title}</HeaderWrapper>
             )}
 
-            <StepComponent data={data} />
+            <StepWrapper>
+              <StepComponent data={data} />
+            </StepWrapper>
 
             <ButtonWrapper>
               {onCancel && (
@@ -141,7 +147,7 @@ const StepForm: React.FC<Props> = ({
               </button>
             </ButtonWrapper>
           </form>
-        </StepWrapper>
+        </Wrapper>
       </div>
     </FormContext>
   );
